@@ -1,0 +1,112 @@
+<div class="sidebar">
+  <div class="logo_content">
+    <div class="logo">
+      <!-- -->
+      <i class="bx"></i>
+      <div class="logo_name"></div>
+    </div>
+  </div>
+  <i #btn class="bx bx-menu" id="btn" (click)="toggleChange()"></i>
+  <ul class="nav_list">
+    <li>
+      <i #bxSearch class="bx bx-search" (click)="toggleChange()"></i>
+      <input type="text" placeholder="Search..." />
+      <span class="tooltip">Search</span>
+    </li>
+    <!-- <li>
+      <a href="#">
+        <i class="bx bx-grid-alt"></i>
+        <span class="links_name">Dashboard</span>
+      </a>
+      <span class="tooltip">Dashboard</span>
+    </li> -->
+    <li class="nav-item-dropdown">
+      <a href="#">
+        <i class="bx bx-plus-circle"></i>
+        <span class="links_name">Crear</span>
+      </a>
+      <span class="tooltip">Crear</span>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#">
+            <i class="bx bx-user"></i>
+            <span class="links_name">Nuevo Cliente</span>
+          </a>
+          <span class="tooltip">Nuevo Cliente</span>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">
+            <i class="bx bx-user"></i>
+            <span class="links_name">Nuevo dependiente </span>
+          </a>
+          <span class="tooltip">Nuevo dependiente</span>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bx-money"></i>
+        <span class="links_name">Solicitar préstamo</span>
+      </a>
+      <span class="tooltip">Solicitar préstamo</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bx-shield-alt-2"></i>
+        <span class="links_name">Solicitudes</span>
+      </a>
+      <span class="tooltip">Solicitudes</span>
+    </li>
+
+    <li class="nav-item-dropdown">
+      <a href="#">
+        <i class="bx bx-money-withdraw"></i>
+        <span class="links_name">Acciones </span>
+      </a>
+      <span class="tooltip">Acciones</span>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#">
+            <i class="bx bx-wallet-alt"></i>
+            <span class="links_name">Retirar efectivo</span>
+          </a>
+          <span class="tooltip">Retirar efectivo</span>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">
+            <i class="bx bx-coin-stack"></i>
+            <span class="links_name">Depositar efectivo</span>
+          </a>
+          <span class="tooltip">Depositar efectivo</span>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bx-cog"></i>
+        <span class="links_name">Configuraciones</span>
+      </a>
+      <span class="tooltip">Configuraciones</span>
+    </li>
+  </ul>
+  <div class="profile_content">
+    <div class="profile">
+      <div class="profile_details">
+        <img
+          src="https://lh3.googleusercontent.com/a-/AOh14GjvKOdrR_Z-N4oaIqPg10NRav_6D9tiKWHNFXXftQ=s288-p-rw-no"
+          alt=""
+        />
+        <div class="name_job">
+          <div class="name">User Name</div>
+          <div class="job">Role</div>
+        </div>
+      </div>
+      <i class="bx bx-log-out" id="log_out"></i>
+    </div>
+  </div>
+</div>
+
+<div class="home_content">
+  <div class="text"></div>
+</div>
