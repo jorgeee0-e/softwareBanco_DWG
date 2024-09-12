@@ -21,7 +21,7 @@
       <span class="tooltip">Dashboard</span>
     </li> -->
     <li class="nav-item-dropdown">
-      <a href="#">
+      <a routerLink="/add-customer" routerLinkActive="active">
         <i class="bx bx-plus-circle"></i>
         <span class="links_name">Crear</span>
       </a>
@@ -44,14 +44,14 @@
       </ul>
     </li>
     <li>
-      <a href="#">
+      <a routerLink="/req-loan" routerLinkActive="active">
         <i class="bx bx-money"></i>
         <span class="links_name">Solicitar préstamo</span>
       </a>
       <span class="tooltip">Solicitar préstamo</span>
     </li>
     <li>
-      <a href="#">
+      <a routerLink="/loan-status" routerLinkActive="active">
         <i class="bx bx-shield-alt-2"></i>
         <span class="links_name">Solicitudes</span>
       </a>
@@ -59,7 +59,7 @@
     </li>
 
     <li class="nav-item-dropdown">
-      <a href="#">
+      <a routerLink="/actions" routerLinkActive="active">
         <i class="bx bx-money-withdraw"></i>
         <span class="links_name">Acciones </span>
       </a>
@@ -83,7 +83,7 @@
       </ul>
     </li>
     <li>
-      <a href="#">
+      <a routerLink="/" routerLinkActive="active">
         <i class="bx bx-cog"></i>
         <span class="links_name">Configuraciones</span>
       </a>
@@ -107,6 +107,8 @@
   </div>
 </div>
 
-<div class="home_content">
+<!-- <div class="home_content">
   <div class="text"></div>
-</div>
+</div> -->
+
+<router-outlet></router-outlet>
