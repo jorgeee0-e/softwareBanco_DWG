@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
-  margin: 0;
+/*   margin: 0; */
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -291,3 +291,45 @@ body {
   display: block;
   color: #333;
 }
+
+/* Modal styles */
+
+.fade{
+  opacity: 100;
+}
+.modal .modal-dialog {
+  margin-top: 5%;
+
+  max-width: 400px;
+  
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+  padding: 20px 30px;
+}
+.modal .modal-content {
+  border-radius: 3px;
+}
+.modal .modal-footer {
+  background: #ecf0f1;
+  border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+  display: inline-block;
+}
+.modal .form-control {
+  border-radius: 2px;
+  box-shadow: none;
+  border-color: #dddddd;
+}
+.modal textarea.form-control {
+  resize: vertical;
+}
+.modal .btn {
+  border-radius: 2px;
+  min-width: 100px;
+}	
+.modal form label {
+  font-weight: normal;
+}
+
+

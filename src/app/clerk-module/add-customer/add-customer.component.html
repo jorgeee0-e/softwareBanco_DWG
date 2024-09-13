@@ -85,7 +85,6 @@
             <button #dropd class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Seleccione el tipo de cliente
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" (click)="updateButtonText('Prestamista')">Prestamista</a></li>
               <li><a class="dropdown-item" (click)="updateButtonText('Cliente')">Cliente</a></li>
               <li><a class="dropdown-item" (click)="updateButtonText('Dependiente')">Dependiente</a></li>
             </ul>
@@ -95,7 +94,7 @@
       <div class="modal-footer">
         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button class="btn btn-success" data-bs-target="#addcxModal" data-bs-toggle="modal" data-dismiss="modal">Siguiente</button>
+        <button class="btn btn-success" data-bs-target="#addcxModal2" data-bs-toggle="modal" data-dismiss="modal">Siguiente</button>
   <!--       <input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">
    -->    </div>
     </form>
@@ -103,13 +102,13 @@
   </div>
   </div>
  <!-- Modal Información personal -->
-<div id="addcxModal" class="modal fade">
+<div id="addcxModal2" class="modal fade">
 <div class="modal-dialog">
 <div class="modal-content">
   <form>
     <div class="modal-header">						
       <h4 class="modal-title">Agregar nuevo cliente</h4>
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
     </div>
     <div class="modal-body">					
       <div class="form-group">
@@ -139,8 +138,8 @@
     </div>
     <div class="modal-footer">
       
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      <button class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" data-dismiss="modal">Siguiente</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      <button class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" data-bs-dismiss="modal">Siguiente</button>
 <!--       <input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">
  -->    </div>
   </form>
@@ -148,59 +147,7 @@
 </div>
 </div>
 <!-- Modal Información Laboral -->
-<div id="modalInfoLaboral" class="modal fade">
-  <div class="modal-dialog">
-  <div class="modal-content">
-    <form>
-      <div class="modal-header">						
-        <h4 class="modal-title">Información Laboral </h4>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">
-          <span>&times;</span> 
-        </button>
-      </div>
-      <div class="modal-body">					
-        <div class="form-group">
-          <label>Lugar de trabajo</label>
-          <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Dirección de trabajo</label>
-          <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Fecha De Inicio</label>
-          <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Posición</label>
-          <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Email laboral</label>
-          <input type="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Contacto</label>
-          <input type="text" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label>Salario</label>
-          <input type="number" class="form-control" placeholder="0.00" required>
-        </div>
-        <div class="form-group">
-          <label>Limite de crédito</label>
-          <input type="number" class="form-control" disabled required>
-        </div>						
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-<!--         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
- -->        <input type="submit" class="btn btn-success" data-bs-toggle="modal" value="Agregar">
-      </div>
-    </form>
-  </div>
-  </div>
-  </div>
+
 <!-- Edit Modal HTML -->
 <div id="editcxModal" class="modal fade"  tabindex="-1" aria-hidden="true">
 <div class="modal-dialog">
