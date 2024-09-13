@@ -1750,10 +1750,10 @@ button{overflow:visible}button,select{text-transform:none}[type=reset],[type=sub
   }
 
   .form-control,.form-select {
-    border: none; /* Quita todos los bordes */
-    border-bottom: 0.5px solid black; /* Agrega solo el borde inferior */
-    border-radius: 0; /* Elimina el redondeo */
-    box-shadow: none; /* Evita sombras por defecto */
+    border: none;
+    border-bottom: 0.5px #333; 
+    border-radius: 0; 
+    box-shadow: none; 
 }
 
 .form-control:disabled {
