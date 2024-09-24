@@ -1,0 +1,112 @@
+.content-wrapper {
+  padding: 20px;
+  margin-left: 78px;
+  transition: margin-left 0.5s;
+}
+
+.view-customer-container {
+  background-color: #1e1e2d;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+.view-customer-card {
+  background-color: #2a2d3e;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.account-number {
+  color: #b4b4b4;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  background-color: #323548;
+  padding: 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.transaction-item:hover {
+  background-color: #3a3f5a;
+}
+
+.transaction-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  color: #b4b4b4;
+}
+
+.transaction-details {
+  flex-grow: 1;
+}
+
+.transaction-description {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.transaction-date {
+  color: #b4b4b4;
+  font-size: 0.9rem;
+}
+
+.transaction-amount {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.transaction-amount.positive {
+  color: #28a745;
+}
+
+.transaction-amount.negative {
+  color: #dc3545;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .view-customer-card {
+    padding: 15px;
+  }
+
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .transaction-icon {
+    margin-bottom: 10px;
+  }
+
+  .transaction-amount {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+}

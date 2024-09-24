@@ -1,0 +1,22 @@
+<div class="content-wrapper">
+    <div class="view-customer-container">
+      <div class="view-customer-card">
+        <h2>Movimientos de la Cuenta</h2>
+        <p class="account-number">Cuenta: {{ accountNumber }}</p>
+        <div class="transaction-list">
+          <div class="transaction-item" *ngFor="let transaction of transactions">
+            <div class="transaction-icon">
+              <i [class]="getTransactionTypeIcon(transaction.type)"></i>
+            </div>
+            <div class="transaction-details">
+              <div class="transaction-description">{{ transaction.description }}</div>
+              <div class="transaction-date">{{ transaction.date | date:'dd/MM/yyyy' }}</div>
+            </div>
+            <div class="transaction-amount" [ngClass]="{'positive': transaction.type === 'deposit', 'negative': transaction.type !== 'deposit'}">
+              {{ transaction.type === 'deposit' ? '+' : '-' }}{{ transaction.amount | currency:'USD':'symbol':'1.2-2' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
