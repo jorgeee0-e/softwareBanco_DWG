@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
 import { SidebarStateService } from 'src/sidebar-state/sidebar-state.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -12,11 +11,14 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   isSidebarActive: boolean = false;
   isLoginPage: boolean = false;
+  clerkView = true;
+  bManager= true;
+  gManager=true;
 
   @ViewChild('btn') btn!: ElementRef;
   @ViewChild('bxSearch') bxSearch!: ElementRef;
   @ViewChild('buscar') buscar!: ElementRef;
-  
+
   constructor(private renderer: Renderer2, private router: Router, private sdBarSrv: SidebarStateService) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -24,7 +26,37 @@ export class AppComponent {
       this.isLoginPage = event.url === '/login' || event.url === '/register';
     });
   }
+  ngOnInit(){
+    this.clerkModuleOptions();
+    this.bManagerOptions();
+    this.gManagerOptions();
+  }
 
+  clerkModuleOptions(){
+    this.router.events.subscribe(event=>{
+      if(event instanceof NavigationEnd){
+        const excluded = ['/loan-status','/add-customer','/req-loan','/actions'];
+        this.clerkView = !excluded.includes(event.url)
+        console.log(event.url)
+      }
+    })
+  }
+  bManagerOptions(){
+    this.router.events.subscribe(event =>{
+      if(event instanceof NavigationEnd){
+        const excluded = ['/employeer-branch','/loan-status-branch','/branch'];
+        this.bManager= !excluded.includes(event.url)
+      }
+    })
+  }
+  gManagerOptions(){
+    this.router.events.subscribe(event =>{
+      if(event instanceof NavigationEnd){
+        const excluded = ['/employeer-general'];
+        this.gManager= !excluded.includes(event.url)
+      }
+    })
+  }
   toggleSidebar() {
     this.isSidebarActive = !this.isSidebarActive;
   }

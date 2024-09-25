@@ -233,5 +233,6 @@ body {
     font-weight: bold;
     color: #666;
   }
-  
-  
+.nueva_cuenta{
+  display:none;
+}

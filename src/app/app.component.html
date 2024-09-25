@@ -21,7 +21,7 @@
       </a>
       <span class="tooltip">Dashboard</span>
     </li> -->
-    <li class="nav-item-dropdown">
+    <li class="nav-item-dropdown" *ngIf="bManager && gManager">
       <a routerLink="/add-customer" routerLinkActive="active">
         <i class="bx bx-plus-circle"></i>
         <span class="links_name">Crear</span>
@@ -43,14 +43,14 @@
           <span class="tooltip">Nuevo Dependiente</span>
         </li>
         <!-- Se agregan opciones de menu para cuentas de cliente y datos de transacciones -->
-        <li>
+        <li *ngIf="clerkView">
           <a routerLink="/add-account" class="dropdown-item">
             <i class="bx bx-plus-circle"></i>
             <span class="links_name">Nueva Cuenta</span>
           </a>
           <span class="tooltip">Nueva Cuenta</span>
         </li>
-        <li>
+        <li *ngIf="clerkView">
           <a routerLink="/view-customer" routerLinkActive="active">
             <i class="bx bx-list-ul"></i>
             <span class="links_name">Ver Movimientos</span>
@@ -59,7 +59,7 @@
         </li>
       </ul>
     </li>
-    <li>
+    <li *ngIf="bManager &&  gManager">
       <a routerLink="/req-loan" routerLinkActive="active">
         <i class="bx bx-money"></i>
         <span class="links_name">Solicitar préstamo</span>
@@ -73,42 +73,42 @@
       </a>
       <span class="tooltip">Solicitudes</span>
     </li>
-    <li>
+    <li *ngIf="clerkView">
       <a routerLink="/employeer-branch" routerLinkActive="active">
         <i class='bx bxs-user-detail'></i>
-        <span class="links_name">EmpleadosB</span>
+        <span class="links_name">Empleados de sucursal</span>
       </a>
-      <span class="tooltip">Empleados</span>
+      <span class="tooltip">Empleados de sucursal</span>
     </li>
-    <li>
+    <li *ngIf="clerkView && bManager">
       <a routerLink="/employeer-general" routerLinkActive="active">
         <i class='bx bxs-user-detail'></i>
         <span class="links_name">EmpleadosG</span>
       </a>
       <span class="tooltip">Empleados</span>
     </li>
-    <li>
+    <li *ngIf="clerkView && gManager">
       <a routerLink="/loan-status-branch" routerLinkActive="active">
         <i class="bx bx-shield-alt-2"></i>
-        <span class="links_name">SolicitudesB</span>
+        <span class="links_name">Solicitudes de sucursal</span>
       </a>
-      <span class="tooltip">Solicitudes</span>
+      <span class="tooltip">Solicitudes de sucursal</span>
     </li>
-    <li>
+    <li *ngIf="clerkView">
       <a routerLink="/branch" routerLinkActive="active">
         <i class='bx bxs-bank'></i>
         <span class="links_name">Sucursales</span>
       </a>
       <span class="tooltip">Sucursales</span>
     </li>
-    <li>
+    <li *ngIf="clerkView">
       <a routerLink="/movements-general" routerLinkActive="active">
         <i class='bx bxs-pie-chart-alt-2'></i>
         <span class="links_name">Movimientos</span>
       </a>
       <span class="tooltip">Movimientos</span>
     </li>
-    <li class="nav-item-dropdown">
+    <li class="nav-item-dropdown" *ngIf="bManager && gManager">
       <a routerLink="/actions" routerLinkActive="active">
         <i class="bx bx-money-withdraw"></i>
         <span class="links_name">Acciones </span>

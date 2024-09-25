@@ -14,6 +14,11 @@ import { RegisterComponent } from './register/register.component';
 import { AddAccountComponent } from './clerk-module/add-account/add-account.component';
 import { ViewCustomerComponent } from './clerk-module/view-customer/view-customer.component';
 import { SearchComponent } from './clerk-module/search/search.component';
+import { MovementsComponent } from './general-managment-module/movements/movements.component';
+import { BranchComponent } from './general-managment-module/branch/branch.component';
+import { EmployeerBranchComponent } from './branch-managment-module/employeer/employeer.component';
+import { EmployeerGeneralComponent } from './general-managment-module/employeer/employeer.component';
+import { LoanStatusBranchComponent } from './branch-managment-module/loan-status/loan-status.component';
 
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
@@ -25,8 +30,14 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'add-account', component: AddAccountComponent },
   { path: 'view-customer', component: ViewCustomerComponent },
+  { path: 'movements-general',component: MovementsComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path:'search',component: SearchComponent}
+  { path:'search',component: SearchComponent},
+  { path: 'branch', component: BranchComponent},
+  { path:'employeer-branch', component: EmployeerBranchComponent},
+  { path: 'employeer-general', component: EmployeerGeneralComponent},
+  { path: 'loan-status-branch', component: LoanStatusBranchComponent}
+
 ]
   
 
@@ -36,6 +47,7 @@ const routes: Routes = [
     AddCustomerComponent,
     ReqLoanComponent,
     LoanStatusComponent,
+    SearchComponent,
     ClerkSummaryComponent,
     LoginComponent,
     RegisterComponent,
