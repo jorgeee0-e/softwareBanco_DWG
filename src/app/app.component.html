@@ -73,7 +73,7 @@
       </a>
       <span class="tooltip">Solicitudes</span>
     </li>
-    <li *ngIf="clerkView">
+    <li *ngIf="clerkView && gManager">
       <a routerLink="/employeer-branch" routerLinkActive="active">
         <i class='bx bxs-user-detail'></i>
         <span class="links_name">Empleados de sucursal</span>
@@ -83,7 +83,7 @@
     <li *ngIf="clerkView && bManager">
       <a routerLink="/employeer-general" routerLinkActive="active">
         <i class='bx bxs-user-detail'></i>
-        <span class="links_name">EmpleadosG</span>
+        <span class="links_name">Empleados</span>
       </a>
       <span class="tooltip">Empleados</span>
     </li>

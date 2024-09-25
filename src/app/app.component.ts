@@ -44,7 +44,7 @@ export class AppComponent {
   bManagerOptions(){
     this.router.events.subscribe(event =>{
       if(event instanceof NavigationEnd){
-        const excluded = ['/employeer-branch','/loan-status-branch','/branch'];
+        const excluded = ['/employeer-branch','/loan-status-branch'];
         this.bManager= !excluded.includes(event.url)
       }
     })
@@ -52,7 +52,7 @@ export class AppComponent {
   gManagerOptions(){
     this.router.events.subscribe(event =>{
       if(event instanceof NavigationEnd){
-        const excluded = ['/employeer-general'];
+        const excluded = ['/employeer-general','/movements-general','/branch'];
         this.gManager= !excluded.includes(event.url)
       }
     })
