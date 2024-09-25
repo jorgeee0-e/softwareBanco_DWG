@@ -1,0 +1,30 @@
+<div class="add-account-container">
+    <div class="add-account-card">
+      <h2>Crear Nueva Cuenta</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="accountType">Tipo de Cuenta</label>
+          <select id="accountType" [(ngModel)]="accountType" name="accountType" required>
+            <option value="savings">Cuenta de Ahorros</option>
+            <option value="checking">Cuenta Corriente</option>
+            <option value="investment">Cuenta de Inversión</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="initialDeposit">Depósito Inicial</label>
+          <input type="number" id="initialDeposit" [(ngModel)]="initialDeposit" name="initialDeposit" required>
+        </div>
+        <div class="form-group">
+          <label for="currency">Moneda</label>
+          <select id="currency" [(ngModel)]="currency" name="currency" required>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-create-account">Crear Cuenta</button>
+      </form>
+      <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
+      <p *ngIf="successMessage" class="success-message">{{successMessage}}</p>
+    </div>
+  </div>

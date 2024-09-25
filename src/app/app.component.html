@@ -1,4 +1,6 @@
-<div class="sidebar">
+
+<ng-container *ngIf="!isLoginPage">
+<div class="sidebar" [class.active]="isSidebarActive">
   <div class="logo_content">
     <div class="logo">
       <!-- -->
@@ -41,6 +43,21 @@
           </a>
           <span class="tooltip">Nuevo dependiente</span>
         </li>
+        <!-- Se agregan opciones de menu para cuentas de cliente y datos de transacciones -->
+        <li>
+          <a routerLink="/add-account" class="dropdown-item">
+            <i class="bx bx-plus-circle"></i>
+            <span class="links_name">Nueva Cuenta</span>
+          </a>
+          <span class="tooltip">Nueva Cuenta</span>
+        </li>
+        <li>
+          <a routerLink="/view-customer" routerLinkActive="active">
+            <i class="bx bx-list-ul"></i>
+            <span class="links_name">Ver Movimientos</span>
+          </a>
+          <span class="tooltip">Ver Movimientos</span>
+        </li>
       </ul>
     </li>
     <li>
@@ -69,14 +86,14 @@
         <li>
           <a class="dropdown-item" href="#">
             <i class="bx bx-wallet-alt"></i>
-            <span class="links_name">Retirar efectivo</span>
+            <span class="links_name">Retirar efecticvo</span>
           </a>
           <span class="tooltip">Retirar efectivo</span>
         </li>
         <li>
           <a class="dropdown-item" href="#">
             <i class="bx bx-coin-stack"></i>
-            <span class="links_name">Depositar efectivo</span>
+            <span class="links_name">Depositar efectivo-</span>
           </a>
           <span class="tooltip">Depositar efectivo</span>
         </li>
@@ -110,8 +127,13 @@
 <!-- <div class="home_content">
   <div class="text"></div>
 </div> -->
- <!-- Modal Información personal -->
- <div id="addcxModal" class="modal fade">
+ 
+</ng-container>
+<router-outlet></router-outlet>
+
+
+<!-- Modal Información personal -->
+<div id="addcxModal" class="modal fade">
   <div class="modal-dialog">
   <div class="modal-content">
     <form>
@@ -254,4 +276,3 @@
     </div>
     </div>
     </div>
-<router-outlet></router-outlet>
