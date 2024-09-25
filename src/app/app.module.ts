@@ -8,6 +8,7 @@ import { LoanStatusComponent } from './clerk-module/loan-status/loan-status.comp
 import { ClerkSummaryComponent } from './clerk-module/clerk-summary/clerk-summary.component';
 import { AddCustomerComponent } from './clerk-module/add-customer/add-customer.component';
 import { ActionsComponent } from './clerk-module/actions/actions.component';
+import { SearchComponent } from './clerk-module/search/search.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'clerk-summary', pathMatch: 'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'add-customer', component: AddCustomerComponent},
   {path:'req-loan', component:ReqLoanComponent},
   {path:'loan-status', component: LoanStatusComponent},
-  {path:'actions', component:ActionsComponent}
+  {path:'actions', component:ActionsComponent},
+  {path:'search',component: SearchComponent}
 ]
   
 

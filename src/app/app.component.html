@@ -10,8 +10,8 @@
   <ul class="nav_list">
     <li>
       <i #bxSearch class="bx bx-search" (click)="toggleChange()"></i>
-      <input type="text" placeholder="Search..." />
-      <span class="tooltip">Search</span>
+      <input #buscar type="text" (keydown.enter)="search()" placeholder="Search..." />
+      <span class="tooltip">Buscar</span>
     </li>
     <!-- <li>
       <a href="#">

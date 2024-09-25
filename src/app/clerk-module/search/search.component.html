@@ -1,0 +1,70 @@
+<div #content class="home_content">
+  <div class="text">
+    <div class="content-inline mt-5 py-3">
+      <div class="search-inline">
+         <input name="txtSearch" class="search-inline--input" placeholder="Ingrese N° DUI">
+      </div>
+      <div class="container mt-3 ">
+        <div class="row justify-content-center">
+          <div class="card mt-3" style="width: 50%;">
+            <div class="profile mt-3">
+              <div class="profile-details">
+                <img src="https://cdn.prod.website-files.com/65489618a9e91669c78068e2/654a1efe01bafb20819b35f5_foto_curriculum-scaled.jpg" alt=""/>
+              </div> 
+            </div>
+            
+            <div class="row-nr"> </div> 
+            <div class="card-body">
+              <div class="row justify-content-center cliente">                
+                <div class="row justify-content-center cxname">Maria de los Angeles</div>
+                <div class="row justify-content-center dui">DUI: 053688665</div>
+                <button class="btn btn-secondary mt-3" style="border-color: #1d1b31; background-color: #1d1b31;" (click)="show()">
+                  <span #label>Mostrar cuentas</span></button>
+              </div>
+              
+            </div>
+          </div>
+        </div>        
+      </div>
+      <div #cuentas id="cuentas" class="container mt-3">
+         <div class='main-wrapper'>
+           <div class='app-wrapper'>
+             <div class='app'>
+               <div class='app-body'>
+                 <div class='app-header mb-3'>
+                   <div class='header-label'>Cuentas</div>
+                   
+                 </div>
+                 <div class='app-row'>
+                   <div class='row-nr'>2342</div>
+                   <div class='row-label'>Chequera</div>
+                   <div class='row-icon'><i class='fa fa-angle-right'></i></div>
+                   <div class='row-amount'>$4,300.00</div>
+                 </div>
+                 <div class='app-row'>
+                   <div class='row-nr'>6939</div>
+                   <div class='row-label'>Ahorros</div>
+                   <div class='row-icon'><i class='fa fa-angle-right'></i></div>
+                   <div class='row-amount'>$185,931.00</div>
+                 </div>
+                 <div class='app-row'>
+                   <div class='row-nr'>2341</div>
+                   <div class='row-label'>Préstamo</div>
+                   <div class='row-icon'><i class='fa fa-angle-right'></i></div>
+                   <div class='row-amount'>$1271.78</div>
+                 </div>
+               </div>
+               <div class='app-footer'>
+                 <a class='raised-link' href='#'>+ Agregar cuenta</a>
+               </div>
+             </div>
+           </div>
+         </div>
+     
+       </div>
+    </div>
+    
+    
+    
+  </div>
+</div>
