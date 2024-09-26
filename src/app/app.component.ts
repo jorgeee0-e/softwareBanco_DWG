@@ -12,50 +12,64 @@ export class AppComponent {
   isSidebarActive: boolean = false;
   isLoginPage: boolean = false;
   clerkView = true;
-  bManager= true;
-  gManager=true;
+  bManager = true;
+  gManager = true;
 
   @ViewChild('btn') btn!: ElementRef;
   @ViewChild('bxSearch') bxSearch!: ElementRef;
   @ViewChild('buscar') buscar!: ElementRef;
 
-  constructor(private renderer: Renderer2, private router: Router, private sdBarSrv: SidebarStateService) {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      this.isLoginPage = event.url === '/login' || event.url === '/register';
-    });
+  constructor(
+    private renderer: Renderer2,
+    private router: Router,
+    private sdBarSrv: SidebarStateService
+  ) {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        this.isLoginPage = event.url === '/login' || event.url === '/register';
+      });
   }
-  ngOnInit(){
+  ngOnInit() {
     this.clerkModuleOptions();
     this.bManagerOptions();
     this.gManagerOptions();
   }
 
-  clerkModuleOptions(){
-    this.router.events.subscribe(event=>{
-      if(event instanceof NavigationEnd){
-        const excluded = ['/loan-status','/add-customer','/req-loan','/actions'];
-        this.clerkView = !excluded.includes(event.url)
-        console.log(event.url)
+  clerkModuleOptions() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const excluded = [
+          '/loan-status',
+          '/add-customer',
+          '/req-loan',
+          '/actions',
+          '/search',
+        ];
+        this.clerkView = !excluded.includes(event.url);
+        console.log(event.url);
       }
-    })
+    });
   }
-  bManagerOptions(){
-    this.router.events.subscribe(event =>{
-      if(event instanceof NavigationEnd){
-        const excluded = ['/employeer-branch','/loan-status-branch'];
-        this.bManager= !excluded.includes(event.url)
+  bManagerOptions() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const excluded = ['/employeer-branch', '/loan-status-branch'];
+        this.bManager = !excluded.includes(event.url);
       }
-    })
+    });
   }
-  gManagerOptions(){
-    this.router.events.subscribe(event =>{
-      if(event instanceof NavigationEnd){
-        const excluded = ['/employeer-general','/movements-general','/branch'];
-        this.gManager= !excluded.includes(event.url)
+  gManagerOptions() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const excluded = [
+          '/employeer-general',
+          '/movements-general',
+          '/branch',
+        ];
+        this.gManager = !excluded.includes(event.url);
       }
-    })
+    });
   }
   toggleSidebar() {
     this.isSidebarActive = !this.isSidebarActive;
@@ -74,11 +88,9 @@ export class AppComponent {
 
     this.sdBarSrv.toogleSideBar();
   }
-  search(){
-    this.buscar.nativeElement.value ="";
+  search() {
+    this.buscar.nativeElement.value = '';
     this.router.navigate(['/search']);
     this.toggleChange();
-    
-
   }
 }

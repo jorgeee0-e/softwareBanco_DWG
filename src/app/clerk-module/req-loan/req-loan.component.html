@@ -1,59 +1,109 @@
-<div #content class="home_content container ">
+<div #content appmover class="home_content container">
   <div class="row justify-content-center">
     <form role="search" id="search-form">
-      <label for="search-input"><i class='bx bx-user-circle' ></i> </label>
-      <input type="text" name="pokemon" id="search-input" placeholder="Ingrese N° cuenta" required="" style="border-color: #333;">
-      <button class="btn btn-success" id="search-button" style="border-color: #1d1b31; background-color: #1d1b31;"><i class='bx bx-search-alt-2' ></i></button>
+      <label for="search-input"><i class="bx bx-user-circle"></i> </label>
+      <input
+        type="text"
+        name="pokemon"
+        id="search-input"
+        placeholder="Ingrese N° cuenta"
+        required=""
+        style="border-color: #333"
+      />
+      <button
+        class="btn btn-success"
+        id="search-button"
+        style="border-color: #1d1b31; background-color: #1d1b31"
+      >
+        <i class="bx bx-search-alt-2"></i>
+      </button>
     </form>
   </div>
 
-  <div class="container justify-content-cente">
+  <div class="container justify-content-center">
     <div class="kmx-layout-grid key-features-grid max-width--lg">
       <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet">
-              <div class="kmx-card kmx-elevation-02 m-b-0">
-                  <div class="kmx-card__primary kmx-card--centered">
-                      <div class="kmx-card__body">
-                          <div class="kmx-card__body--section budget-calculator" id="budget-calculator">
-                              <div data-reactroot="" class="finance-budget-tron-container" id="financeBudgetTron">
-                                  <div class="calculator">
-                                    <div class="container mt-3">
-                                      <div class="row mb-3">
-                                        <div class="row g-3">
-                                          <div class="col-md">
-                                            <div class="form-floating">
-                                              <input type="email" class="form-control" id="floatingInputGridClient" placeholder="name@example.com" value="Juan Perez Pereira">
-                                              <label for="floatingInputGrid">Cliente</label>
-                                            </div>
-                                          </div>
-                                          <div class="col-md">
-                                            <div class="form-floating">                                          
-                                              <input type="text" class="form-control" id="floatingInputGridSalario" placeholder="0.00" value="2,000" disabled>
-                                              <label for="floatingInputGrid">Salario</label>
-                                            </div>
-                                          </div>
-                                          <div class="col-md">
-                                            <div class="form-floating">                                          
-                                              <input type="email" class="form-control" id="floatingInputGridAmount" placeholder="$0.00" value="50,000">
-                                              <label for="floatingInputGrid" style="background-color: transparent;">Cantidad a prestar</label>
-                                            </div>
-                                          </div>
-                                          <div class="col-md">
-                                            <div class="form-floating">
-                                              <select class="form-select" id="floatingSelectGrid">
-                                                <option selected>Seleccione el tiempo</option>
-                                                <option value="1">12 Meses</option>
-                                                <option value="2">24 Meses</option>
-                                                <option value="3">36 Meses</option>
-                                                <option value="3">48 Meses</option>
-                                                <option value="3">60 Meses</option>
-                                              </select>
-                                              <label for="floatingSelectGrid">Termino del préstamo</label>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                      <!-- <div class="finance-details">
+        <div
+          class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet"
+        >
+          <div class="kmx-card kmx-elevation-02 m-b-0">
+            <div class="kmx-card__primary kmx-card--centered">
+              <div class="kmx-card__body">
+                <div
+                  class="kmx-card__body--section budget-calculator"
+                  id="budget-calculator"
+                >
+                  <div
+                    data-reactroot=""
+                    class="finance-budget-tron-container"
+                    id="financeBudgetTron"
+                  >
+                    <div class="calculator">
+                      <div class="container mt-3">
+                        <div class="row mb-3">
+                          <div class="row g-3">
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="floatingInputGridClient"
+                                  placeholder="name@example.com"
+                                  value="Juan Perez Pereira"
+                                />
+                                <label for="floatingInputGrid">Cliente</label>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="floatingInputGridSalario"
+                                  placeholder="0.00"
+                                  value="2,000"
+                                  disabled
+                                />
+                                <label for="floatingInputGrid">Salario</label>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="floatingInputGridAmount"
+                                  placeholder="$0.00"
+                                  value="50,000"
+                                />
+                                <label
+                                  for="floatingInputGrid"
+                                  style="background-color: transparent"
+                                  >Cantidad a prestar</label
+                                >
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <select
+                                  class="form-select"
+                                  id="floatingSelectGrid"
+                                >
+                                  <option selected>Seleccione el tiempo</option>
+                                  <option value="1">12 Meses</option>
+                                  <option value="2">24 Meses</option>
+                                  <option value="3">36 Meses</option>
+                                  <option value="3">48 Meses</option>
+                                  <option value="3">60 Meses</option>
+                                </select>
+                                <label for="floatingSelectGrid"
+                                  >Termino del préstamo</label
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="finance-details">
                                           <div class="finance-inputs"><span class="finance-input-credit-score">
                                                   <div class="mdc-select kmx-select" role="listbox" id="credit-score">
                                                       <div class="mdc-select__surface mdc-ripple-upgraded" tabindex="0"
@@ -110,47 +160,73 @@
                                               </span>
                                           </div>
                                       </div> -->
-                                      
-                                      <div class="finance-section estimated-terms-container">
-                                          <div class="finance-column-left estimated-terms-list">
-                                            <div class="finance-title">Desglose de pagos estimado**</div>
-                                              <div class="estimated-terms-item">
-                                                  <div class="key">Amortizaciones</div>
-                                                  <div class="value">$<span class="vehicle-price">75.00</span>*</div>
-                                              </div>
-                                              <div class="estimated-terms-item">
-                                                  <div class="key">Seguro de deuda</div>
-                                                  <div class="value">+$<div class="intrest">2.36</div></div>
-                                              </div>
-                                              <div class="estimated-terms-item">
-                                                  <div class="key">Seguro de vida</div>
-                                                  <div class="value">+$<span class="discount">1.36</span></div>
-                                              </div>
-                                              <div class="estimated-terms-item estimated-terms-total">
-                                                  <div class="key">Mensualidades</div>
-                                                  <div class="value">$<span class="finance">78.72</span></div>
-                                              </div>
-                                          </div>
-                                          <div class="finance-column-right">
-                                            <div class="finance-title">Desglose de desembolso de préstamo</div>
-                                            <div class="estimated-terms-item">
-                                                <div class="key">Monto total</div>
-                                                <div class="value">$<span class="vehicle-price">5,000</span></div>
-                                            </div>
-                                            <div class="estimated-terms-item">
-                                                <div class="key">Comisión por desembolso</div>
-                                                <div class="value">-$<div class="intrest">50</div></div>
-                                            </div>
-                                            <div class="estimated-terms-item">
-                                                <div class="key">Cheque de gerencia</div>
-                                                <div class="value">-$<span class="discount">3.15</span></div>
-                                            </div>
-                                            <div class="estimated-terms-item estimated-terms-total">
-                                                <div class="key">A desembolsar</div>
-                                                <div class="value">$<span class="finance">4,946.85</span></div>
-                                            </div>
-                                        </div>
-  <!--                                         <div class="finance-column-right">
+
+                        <div class="finance-section estimated-terms-container">
+                          <div class="finance-column-left estimated-terms-list">
+                            <div class="finance-title">
+                              Desglose de pagos estimado**
+                            </div>
+                            <div class="estimated-terms-item">
+                              <div class="key">Amortizaciones</div>
+                              <div class="value">
+                                $<span class="vehicle-price">75.00</span>*
+                              </div>
+                            </div>
+                            <div class="estimated-terms-item">
+                              <div class="key">Seguro de deuda</div>
+                              <div class="value">
+                                +$
+                                <div class="intrest">2.36</div>
+                              </div>
+                            </div>
+                            <div class="estimated-terms-item">
+                              <div class="key">Seguro de vida</div>
+                              <div class="value">
+                                +$<span class="discount">1.36</span>
+                              </div>
+                            </div>
+                            <div
+                              class="estimated-terms-item estimated-terms-total"
+                            >
+                              <div class="key">Mensualidades</div>
+                              <div class="value">
+                                $<span class="finance">78.72</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="finance-column-right">
+                            <div class="finance-title">
+                              Desglose de desembolso de préstamo
+                            </div>
+                            <div class="estimated-terms-item">
+                              <div class="key">Monto total</div>
+                              <div class="value">
+                                $<span class="vehicle-price">5,000</span>
+                              </div>
+                            </div>
+                            <div class="estimated-terms-item">
+                              <div class="key">Comisión por desembolso</div>
+                              <div class="value">
+                                -$
+                                <div class="intrest">50</div>
+                              </div>
+                            </div>
+                            <div class="estimated-terms-item">
+                              <div class="key">Cheque de gerencia</div>
+                              <div class="value">
+                                -$<span class="discount">3.15</span>
+                              </div>
+                            </div>
+                            <div
+                              class="estimated-terms-item estimated-terms-total"
+                            >
+                              <div class="key">A desembolsar</div>
+                              <div class="value">
+                                $<span class="finance">4,946.85</span>
+                              </div>
+                            </div>
+                          </div>
+                          <!--                                         <div class="finance-column-right">
                                               <div class="estimated-terms-summary-container">
                                                   <div class="estimated-terms-summary">
                                                       <div class="estimated-terms-summary-item value"> $<span class="monthly">78.78</span></div>
@@ -160,54 +236,93 @@
                                                   </div>
                                               </div>
                                           </div> -->
+                        </div>
+                        <div class="finance-title">
+                          Resumen de condiciones de crédito ($5,000)
+                        </div>
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="finance-column-right">
+                                <div class="estimated-terms-summary-container">
+                                  <div
+                                    id="cont"
+                                    class="estimated-terms-summary"
+                                  >
+                                    <div class="row">
+                                      <div class="col-6">
+                                        <div
+                                          class="estimated-terms-summary-item value"
+                                        >
+                                          $<span class="monthly">78.78</span>
+                                        </div>
+                                        <div
+                                          class="estimated-terms-summary-item key"
+                                        >
+                                          Mensualidad
+                                        </div>
                                       </div>
-                                      <div class="finance-title">Resumen de condiciones de crédito ($5,000)</div>
-                                      <div class="container">
-                                        <div class="row">
-                                          <div class="col-6"> 
-                                            <div class="finance-column-right">
-                                              <div class="estimated-terms-summary-container">
-                                                  <div id="cont" class="estimated-terms-summary">
-                                                    <div class="row">
-                                                      <div class="col-6">
-                                                        <div class="estimated-terms-summary-item value"> $<span class="monthly">78.78</span></div>
-                                                      <div class="estimated-terms-summary-item key">Mensualidad</div>
-                                                      </div>
-                                                      <div class="col-6">
-                                                        <div class="estimated-terms-summary-item value"><span class="percentup">6</span><span class="percent">%</span></div>
-                                                      <div class="estimated-terms-summary-item key">Interés</div>
-                                                      </div>
-                                                      
-                                                    </div>
-                                                      
-                                                  </div>
-                                              </div>
-                                          </div>                                                                                 
-                                          </div>
-                                          <div class="col-6 mt-2">
-                                            <div class="d-grid gap-2" ><button class="btn btn-secondary  btn-lg"  style="border-color: #1d1b31; background-color: #1d1b31;"><span
-                                              class="svg-icon-wrapper" >Get Pre-Qualified now</span></button></div>
-                                            </div>
-                                          </div> 
+                                      <div class="col-6">
+                                        <div
+                                          class="estimated-terms-summary-item value"
+                                        >
+                                          <span class="percentup">6</span
+                                          ><span class="percent">%</span>
+                                        </div>
+                                        <div
+                                          class="estimated-terms-summary-item key"
+                                        >
+                                          Interés
+                                        </div>
                                       </div>
-                                      <div class="finance-disclaimer">**Aca ira un disclaimer financiero que no se que le pondre pero algo se me ocurrira.
-                                        **Aca ira un disclaimer financiero que no se que le pondre pero algo se me ocurrira 
-                                        **Aca ira un disclaimer financiero que no se que le pondre pero algo se me ocurrira 
-                                      </div>
+                                    </div>
                                   </div>
+                                </div>
                               </div>
+                            </div>
+                            <div class="col-6 mt-2">
+                              <div class="d-grid gap-2">
+                                <button
+                                  class="btn btn-secondary btn-lg"
+                                  style="
+                                    border-color: #1d1b31;
+                                    background-color: #1d1b31;
+                                  "
+                                >
+                                  <span class="svg-icon-wrapper"
+                                    >Get Pre-Qualified now</span
+                                  >
+                                </button>
+                              </div>
+                            </div>
                           </div>
+                        </div>
+                        <div class="finance-disclaimer">
+                          **Aca ira un disclaimer financiero que no se que le
+                          pondre pero algo se me ocurrira. **Aca ira un
+                          disclaimer financiero que no se que le pondre pero
+                          algo se me ocurrira **Aca ira un disclaimer financiero
+                          que no se que le pondre pero algo se me ocurrira
+                        </div>
                       </div>
+                    </div>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Put this code anywhere in the body of your page where you want the badge to show up. -->
+
+  <script
+    id="fiverr-seller-widget-script-94f33aa0-44d9-4658-ad59-a66eafc31b38"
+    src="https://widgets.fiverr.com/api/v1/seller/shahjehanali?widget_id=94f33aa0-44d9-4658-ad59-a66eafc31b38"
+    data-config='{"category_name":"Programming \u0026 Tech"}'
+    async="true"
+    defer="true"
+  ></script>
 </div>
-
-
-<!-- Put this code anywhere in the body of your page where you want the badge to show up. -->
-
-
-<script id='fiverr-seller-widget-script-94f33aa0-44d9-4658-ad59-a66eafc31b38' src='https://widgets.fiverr.com/api/v1/seller/shahjehanali?widget_id=94f33aa0-44d9-4658-ad59-a66eafc31b38' data-config='{"category_name":"Programming \u0026 Tech"}' async='true' defer='true'></script>

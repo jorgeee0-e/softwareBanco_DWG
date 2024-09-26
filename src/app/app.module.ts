@@ -19,6 +19,7 @@ import { BranchComponent } from './general-managment-module/branch/branch.compon
 import { EmployeerBranchComponent } from './branch-managment-module/employeer/employeer.component';
 import { EmployeerGeneralComponent } from './general-managment-module/employeer/employeer.component';
 import { LoanStatusBranchComponent } from './branch-managment-module/loan-status/loan-status.component';
+import { MoverDirectiva } from './directives/mover.directive';
 
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
@@ -30,19 +31,17 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'add-account', component: AddAccountComponent },
   { path: 'view-customer', component: ViewCustomerComponent },
-  { path: 'movements-general',component: MovementsComponent},
+  { path: 'movements-general', component: MovementsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path:'search',component: SearchComponent},
-  { path: 'branch', component: BranchComponent},
-  { path:'employeer-branch', component: EmployeerBranchComponent},
-  { path: 'employeer-general', component: EmployeerGeneralComponent},
-  { path: 'loan-status-branch', component: LoanStatusBranchComponent}
-
-]
-  
+  { path: 'search', component: SearchComponent },
+  { path: 'branch', component: BranchComponent },
+  { path: 'employeer-branch', component: EmployeerBranchComponent },
+  { path: 'employeer-general', component: EmployeerGeneralComponent },
+  { path: 'loan-status-branch', component: LoanStatusBranchComponent },
+];
 
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
     AddCustomerComponent,
     ReqLoanComponent,
@@ -53,14 +52,12 @@ const routes: Routes = [
     RegisterComponent,
     ActionsComponent,
     AddAccountComponent,
-    ViewCustomerComponent
+    ViewCustomerComponent,
+    SearchComponent,
+    MoverDirectiva,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(routes)
-  ],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
