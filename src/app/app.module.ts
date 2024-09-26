@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddAccountComponent } from './clerk-module/add-account/add-account.component';
 import { ViewCustomerComponent } from './clerk-module/view-customer/view-customer.component';
+import { DepositMoneyComponent } from './clerk-module/deposit-money/deposit-money.component';
+import { WithdrawMoneyComponent } from './clerk-module/withdraw-money/withdraw-money.component';
 import { SearchComponent } from './clerk-module/search/search.component';
 import { MovementsComponent } from './general-managment-module/movements/movements.component';
 import { BranchComponent } from './general-managment-module/branch/branch.component';
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'add-account', component: AddAccountComponent },
   { path: 'view-customer', component: ViewCustomerComponent },
+  { path: 'deposit-money', component: DepositMoneyComponent },
+  { path: 'withdraw-money', component: WithdrawMoneyComponent },
   { path: 'movements-general', component: MovementsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
@@ -53,6 +57,14 @@ const routes: Routes = [
     ActionsComponent,
     AddAccountComponent,
     ViewCustomerComponent,
+    DepositMoneyComponent,
+    WithdrawMoneyComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
     SearchComponent,
     MoverDirectiva,
   ],
