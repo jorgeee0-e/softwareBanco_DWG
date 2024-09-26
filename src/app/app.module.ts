@@ -15,7 +15,13 @@ import { AddAccountComponent } from './clerk-module/add-account/add-account.comp
 import { ViewCustomerComponent } from './clerk-module/view-customer/view-customer.component';
 import { DepositMoneyComponent } from './clerk-module/deposit-money/deposit-money.component';
 import { WithdrawMoneyComponent } from './clerk-module/withdraw-money/withdraw-money.component';
-
+import { SearchComponent } from './clerk-module/search/search.component';
+import { MovementsComponent } from './general-managment-module/movements/movements.component';
+import { BranchComponent } from './general-managment-module/branch/branch.component';
+import { EmployeerBranchComponent } from './branch-managment-module/employeer/employeer.component';
+import { EmployeerGeneralComponent } from './general-managment-module/employeer/employeer.component';
+import { LoanStatusBranchComponent } from './branch-managment-module/loan-status/loan-status.component';
+import { MoverDirectiva } from './directives/mover.directive';
 
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
@@ -29,15 +35,22 @@ const routes: Routes = [
   { path: 'view-customer', component: ViewCustomerComponent },
   { path: 'deposit-money', component: DepositMoneyComponent },
   { path: 'withdraw-money', component: WithdrawMoneyComponent },
+  { path: 'movements-general', component: MovementsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'search', component: SearchComponent },
+  { path: 'branch', component: BranchComponent },
+  { path: 'employeer-branch', component: EmployeerBranchComponent },
+  { path: 'employeer-general', component: EmployeerGeneralComponent },
+  { path: 'loan-status-branch', component: LoanStatusBranchComponent },
 ];
 
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
     AddCustomerComponent,
     ReqLoanComponent,
     LoanStatusComponent,
+    SearchComponent,
     ClerkSummaryComponent,
     LoginComponent,
     RegisterComponent,
@@ -52,8 +65,11 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
+    SearchComponent,
+    MoverDirectiva,
   ],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,59 +1,46 @@
-<div class="container">
+<div #content appmover class="home_content container">
   <form role="search" id="search-form">
-    <label for="search-input"><i class='bx bx-user-circle' ></i> </label>
-    <input type="text" name="pokemon" id="search-input" placeholder="Ingrese N° cuenta" required="" style="border-color: #333;">
-    <input type="text" name="pokemon" id="search-input" placeholder="Ingrese DUI" required="" style="border-color: #333;">
-    <button class="btn btn-success" id="search-button" style="border-color: #1d1b31; background-color: #1d1b31;"><i class='bx bx-search-alt-2' ></i></button>
+    <label for="search-input"><i class="bx bx-user-circle"></i> </label>
+    <input
+      type="text"
+      name="pokemon"
+      id="search-input"
+      placeholder="Ingrese N° cuenta"
+      required=""
+      style="border-color: #333"
+    />
+    <input
+      type="text"
+      name="pokemon"
+      id="search-input"
+      placeholder="Ingrese DUI"
+      required=""
+      style="border-color: #333"
+    />
+    <button
+      class="btn btn-success"
+      id="search-button"
+      style="border-color: #1d1b31; background-color: #1d1b31"
+    >
+      <i class="bx bx-search-alt-2"></i>
+    </button>
   </form>
-<!--   <div class="finance-title">Lista de transacciones</div>
-  <table class="table table-striped table-hover">
-          <thead>
-              <tr>
-                <th>Id transaccion</th>
-                <th>Fecha</th>
-                <th>Medio</th>
-                <th>Tipo</th>
-                <th>Monto</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>1</td>
-                  <td>11-09-2024</td>
-                  <td>ATM</td>
-                  <td>Retiro</td>
-                  <td>-25.00</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>12-08-2024</td>
-                <td>On premises</td>
-                <td>Déposito</td>
-                <td>+15,000</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>30-08-2024</td>
-              <td>On premises</td>
-              <td>Retiro</td>
-              <td>-575</td>
-          </tr>
-              <tr>
-          </tbody>
-  </table> -->
   <section class="my-app__body">
     <div class="container">
       <div class="row">
         <div class="col-4">
           <!-- Begin Payment Balance card -->
           <div class="media-body">
-              <div class="form-floating">
-                <input type="email" class="form-control my-app__header-title" id="floatingInputGridNombreCliente" value="Juan Perez Pereira">
-                <label for="floatingInputGrid">Acc# 01871810872100</label>
-              </div>
-            <div class="my-input input-group mb-3">
-
+            <div class="form-floating">
+              <input
+                type="email"
+                class="form-control my-app__header-title"
+                id="floatingInputGridNombreCliente"
+                value="Juan Perez Pereira"
+              />
+              <label for="floatingInputGrid">01871810872100</label>
             </div>
+            <div class="my-input input-group mb-3"></div>
           </div>
 
           <div class="my-card card">
@@ -64,8 +51,7 @@
               </div>
             </div>
             <div class="my-card__body card-body">
-
-              <hr class="my-divider">
+              <hr class="my-divider" />
               <ul class="my-list my-list--simple list-inline mb-0">
                 <li><a href="#">Depositar</a></li>
                 <li><a href="#">Retirar</a></li>
@@ -81,18 +67,18 @@
               <ul class="my-list my-list--simple list-inline mb-0">
                 <li class="my-list-item">
                   <span class="list__icon">
-                    <img src="./images/icon-bank-of-america.svg" alt>
+                    <img src="./images/icon-bank-of-america.svg" alt />
                   </span>
                   <span>N° cuenta x-9966</span>
                 </li>
                 <li class="my-list-item">
                   <span class="my-list-item__graphic list__icon">
-                    <img src="./images/icon-mastercard.svg" alt>
+                    <img src="./images/icon-mastercard.svg" alt />
                   </span>
                   <span class="my-list-item__text">MasterCard x-1144</span>
                 </li>
               </ul>
-              <hr class="my-divider">
+              <hr class="my-divider" />
               <ul class="my-list-inline list-inline mb-0">
                 <li><a href="#">Crear una nueva cuenta</a></li>
               </ul>
@@ -102,7 +88,6 @@
         </div>
 
         <div class="col-8">
-
           <!-- Begin Pending card -->
           <div class="my-card card">
             <div class="my-card__header card-header">
@@ -117,7 +102,9 @@
                 </div>
                 <div class="my-list-item__text">
                   <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">Withdraw to bank account</p>
+                  <p class="my-list-item__text-description">
+                    Withdraw to bank account
+                  </p>
                 </div>
                 <div class="my-list-item__fee">
                   <span class="my-list-item__fee-delta">+250.00</span>
@@ -131,7 +118,9 @@
                 </div>
                 <div class="my-list-item__text">
                   <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">Withdraw to bank account</p>
+                  <p class="my-list-item__text-description">
+                    Withdraw to bank account
+                  </p>
                 </div>
                 <div class="my-list-item__fee">
                   <span class="my-list-item__fee-delta">+250.00</span>
@@ -145,7 +134,9 @@
                 </div>
                 <div class="my-list-item__text">
                   <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">Withdraw to bank account</p>
+                  <p class="my-list-item__text-description">
+                    Withdraw to bank account
+                  </p>
                 </div>
                 <div class="my-list-item__fee">
                   <span class="my-list-item__fee-delta">+250.00</span>
@@ -170,7 +161,9 @@
                 </div>
                 <div class="my-list-item__text">
                   <h4 class="my-list-item__text-title">Gumroad, Inc</h4>
-                  <p class="my-list-item__text-description">Withdraw to bank account</p>
+                  <p class="my-list-item__text-description">
+                    Withdraw to bank account
+                  </p>
                 </div>
                 <div class="my-list-item__fee">
                   <span class="my-list-item__fee-delta">+250.00</span>
@@ -184,7 +177,9 @@
                 </div>
                 <div class="my-list-item__text">
                   <h4 class="my-list-item__text-title">Spotify Limited</h4>
-                  <p class="my-list-item__text-description">Preapproved Payment</p>
+                  <p class="my-list-item__text-description">
+                    Preapproved Payment
+                  </p>
                 </div>
                 <div class="my-list-item__fee">
                   <span class="my-list-item__fee-delta">+250.00</span>
@@ -198,7 +193,9 @@
                 </div>
                 <div class="my-list-item__text">
                   <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">Withdraw to bank account</p>
+                  <p class="my-list-item__text-description">
+                    Withdraw to bank account
+                  </p>
                 </div>
                 <div class="my-list-item__fee">
                   <span class="my-list-item__fee-delta">+250.00</span>
@@ -212,5 +209,4 @@
       </div>
     </div>
   </section>
-
 </div>
