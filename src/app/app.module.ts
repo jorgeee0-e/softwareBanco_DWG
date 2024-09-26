@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddAccountComponent } from './clerk-module/add-account/add-account.component';
 import { ViewCustomerComponent } from './clerk-module/view-customer/view-customer.component';
+import { DepositMoneyComponent } from './clerk-module/deposit-money/deposit-money.component';
+import { WithdrawMoneyComponent } from './clerk-module/withdraw-money/withdraw-money.component';
+
 
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
@@ -24,6 +27,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'add-account', component: AddAccountComponent },
   { path: 'view-customer', component: ViewCustomerComponent },
+  { path: 'deposit-money', component: DepositMoneyComponent },
+  { path: 'withdraw-money', component: WithdrawMoneyComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
@@ -38,11 +43,14 @@ const routes: Routes = [
     RegisterComponent,
     ActionsComponent,
     AddAccountComponent,
-    ViewCustomerComponent
+    ViewCustomerComponent,
+    DepositMoneyComponent,
+    WithdrawMoneyComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
