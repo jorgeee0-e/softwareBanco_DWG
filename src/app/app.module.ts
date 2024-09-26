@@ -22,6 +22,7 @@ import { EmployeerBranchComponent } from './branch-managment-module/employeer/em
 import { EmployeerGeneralComponent } from './general-managment-module/employeer/employeer.component';
 import { LoanStatusBranchComponent } from './branch-managment-module/loan-status/loan-status.component';
 import { MoverDirectiva } from './directives/mover.directive';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
@@ -60,15 +61,7 @@ const routes: Routes = [
     DepositMoneyComponent,
     WithdrawMoneyComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes)
-    SearchComponent,
-    MoverDirectiva,
-  ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  imports: [CommonModule,ReactiveFormsModule, BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
 })

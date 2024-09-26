@@ -1,212 +1,47 @@
-<div #content appmover class="home_content container">
-  <form role="search" id="search-form">
-    <label for="search-input"><i class="bx bx-user-circle"></i> </label>
-    <input
-      type="text"
-      name="pokemon"
-      id="search-input"
-      placeholder="Ingrese N° cuenta"
-      required=""
-      style="border-color: #333"
-    />
-    <input
-      type="text"
-      name="pokemon"
-      id="search-input"
-      placeholder="Ingrese DUI"
-      required=""
-      style="border-color: #333"
-    />
-    <button
-      class="btn btn-success"
-      id="search-button"
-      style="border-color: #1d1b31; background-color: #1d1b31"
-    >
-      <i class="bx bx-search-alt-2"></i>
-    </button>
-  </form>
-  <section class="my-app__body">
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-          <!-- Begin Payment Balance card -->
-          <div class="media-body">
-            <div class="form-floating">
-              <input
-                type="email"
-                class="form-control my-app__header-title"
-                id="floatingInputGridNombreCliente"
-                value="Juan Perez Pereira"
-              />
-              <label for="floatingInputGrid">01871810872100</label>
-            </div>
-            <div class="my-input input-group mb-3"></div>
+<div class="home_content content-wrapper">
+  <div class="view-customer-container">
+    <div class="view-customer-card">
+      <h2 style="color: black;">Juan Perez Pereira</h2>
+      
+      <div class="accounts-container">
+        <div class="account-card" *ngFor="let account of accounts" 
+             [class.selected]="account.id === selectedAccount.id"
+             (click)="onAccountSelect(account)">
+          <div class="account-type">{{ getAccountTypeLabel(account.type) }}</div>
+          <div class="account-number">{{ account.number }}</div>
+          <div class="account-balance">{{ account.balance | currency:'USD':'symbol':'1.2-2' }}</div>
+        </div>
+      </div>
+      <div class="container text-center mb-3">
+        <div class="row g-2">
+          <div class="col align-self-center">
+            <button class="btn btn-primary  btn-lg"><span routerLink="/deposit-money" routerLinkActive="active"><i class='bx bx-money-withdraw btn-lg'></i><a> Deposito</a> </span></button>
           </div>
-
-          <div class="my-card card">
-            <div class="my-card__header card-header">
-              <div class="my-card__header-title">
-                <div class="my-text-overline">Balance</div>
-                <h3 class="my-text-headline">$52,100.00</h3>
-              </div>
-            </div>
-            <div class="my-card__body card-body">
-              <hr class="my-divider" />
-              <ul class="my-list my-list--simple list-inline mb-0">
-                <li><a href="#">Depositar</a></li>
-                <li><a href="#">Retirar</a></li>
-              </ul>
-            </div>
+          <div class="col align-self-center">
+            
+          <button class="btn btn-primary btn-lg"><span routerLink="/withdraw-money" routerLinkActive="active"><i class='bx bx-money' ></i> Retiro</span></button>
           </div>
-          <!-- End Payment Balance card -->
-
-          <!-- Begin Bank Accounts card -->
-          <div class="my-card card">
-            <div class="my-card__body card-body">
-              <div class="my-text-overline">Cuentas y tarjetas asociadas</div>
-              <ul class="my-list my-list--simple list-inline mb-0">
-                <li class="my-list-item">
-                  <span class="list__icon">
-                    <img src="./images/icon-bank-of-america.svg" alt />
-                  </span>
-                  <span>N° cuenta x-9966</span>
-                </li>
-                <li class="my-list-item">
-                  <span class="my-list-item__graphic list__icon">
-                    <img src="./images/icon-mastercard.svg" alt />
-                  </span>
-                  <span class="my-list-item__text">MasterCard x-1144</span>
-                </li>
-              </ul>
-              <hr class="my-divider" />
-              <ul class="my-list-inline list-inline mb-0">
-                <li><a href="#">Crear una nueva cuenta</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- End Bank Accounts card -->
         </div>
 
-        <div class="col-8">
-          <!-- Begin Pending card -->
-          <div class="my-card card">
-            <div class="my-card__header card-header">
-              <h3 class="my-card__header-title card-title">En espera</h3>
-              <a class="my-card__header-link" href="#">Ver todos →</a>
-            </div>
-            <ul class="my-list list-group list-group-flush">
-              <li class="my-list-item list-group-item">
-                <div class="my-list-item__date">
-                  <span class="my-list-item__date-day">28</span>
-                  <span class="my-list-item__date-month">jul</span>
-                </div>
-                <div class="my-list-item__text">
-                  <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">
-                    Withdraw to bank account
-                  </p>
-                </div>
-                <div class="my-list-item__fee">
-                  <span class="my-list-item__fee-delta">+250.00</span>
-                  <span class="my-list-item__fee-currency">USD</span>
-                </div>
-              </li>
-              <li class="my-list-item list-group-item">
-                <div class="my-list-item__date">
-                  <span class="my-list-item__date-day">28</span>
-                  <span class="my-list-item__date-month">jul</span>
-                </div>
-                <div class="my-list-item__text">
-                  <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">
-                    Withdraw to bank account
-                  </p>
-                </div>
-                <div class="my-list-item__fee">
-                  <span class="my-list-item__fee-delta">+250.00</span>
-                  <span class="my-list-item__fee-currency">USD</span>
-                </div>
-              </li>
-              <li class="my-list-item list-group-item">
-                <div class="my-list-item__date">
-                  <span class="my-list-item__date-day">28</span>
-                  <span class="my-list-item__date-month">jul</span>
-                </div>
-                <div class="my-list-item__text">
-                  <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">
-                    Withdraw to bank account
-                  </p>
-                </div>
-                <div class="my-list-item__fee">
-                  <span class="my-list-item__fee-delta">+250.00</span>
-                  <span class="my-list-item__fee-currency">USD</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- End Pending card -->
+      </div>
 
-          <!-- Begin Completed card -->
-          <div class="my-card card">
-            <div class="my-card__header card-header">
-              <h3 class="my-card__header-title card-title">Completed</h3>
-              <a class="my-card__header-link" href="#">See all →</a>
-            </div>
-            <ul class="my-list list-group list-group-flush">
-              <li class="my-list-item list-group-item">
-                <div class="my-list-item__date">
-                  <span class="my-list-item__date-day">28</span>
-                  <span class="my-list-item__date-month">jul</span>
-                </div>
-                <div class="my-list-item__text">
-                  <h4 class="my-list-item__text-title">Gumroad, Inc</h4>
-                  <p class="my-list-item__text-description">
-                    Withdraw to bank account
-                  </p>
-                </div>
-                <div class="my-list-item__fee">
-                  <span class="my-list-item__fee-delta">+250.00</span>
-                  <span class="my-list-item__fee-currency">USD</span>
-                </div>
-              </li>
-              <li class="my-list-item list-group-item">
-                <div class="my-list-item__date">
-                  <span class="my-list-item__date-day">28</span>
-                  <span class="my-list-item__date-month">jul</span>
-                </div>
-                <div class="my-list-item__text">
-                  <h4 class="my-list-item__text-title">Spotify Limited</h4>
-                  <p class="my-list-item__text-description">
-                    Preapproved Payment
-                  </p>
-                </div>
-                <div class="my-list-item__fee">
-                  <span class="my-list-item__fee-delta">+250.00</span>
-                  <span class="my-list-item__fee-currency">USD</span>
-                </div>
-              </li>
-              <li class="my-list-item list-group-item">
-                <div class="my-list-item__date">
-                  <span class="my-list-item__date-day">28</span>
-                  <span class="my-list-item__date-month">jul</span>
-                </div>
-                <div class="my-list-item__text">
-                  <h4 class="my-list-item__text-title">Bank of America</h4>
-                  <p class="my-list-item__text-description">
-                    Withdraw to bank account
-                  </p>
-                </div>
-                <div class="my-list-item__fee">
-                  <span class="my-list-item__fee-delta">+250.00</span>
-                  <span class="my-list-item__fee-currency">USD</span>
-                </div>
-              </li>
-            </ul>
+      <h3>Movimientos de la Cuenta</h3>
+      <p class="selected-account">Cuenta seleccionada: {{ selectedAccount.number }}</p>
+      
+      <div class="transaction-list">
+        <div class="transaction-item" *ngFor="let transaction of transactions">
+          <div class="transaction-icon">
+            <i [class]="getTransactionTypeIcon(transaction.type)"></i>
           </div>
-          <!-- End Completed card -->
+          <div class="transaction-details">
+            <div class="transaction-description">{{ transaction.description }}</div>
+            <div class="transaction-date">{{ transaction.date | date:'dd/MM/yyyy' }}</div>
+          </div>
+          <div class="transaction-amount" [ngClass]="{'positive': transaction.type === 'deposit', 'negative': transaction.type !== 'deposit'}">
+            {{ transaction.type === 'deposit' ? '+' : '-' }}{{ transaction.amount | currency:'USD':'symbol':'1.2-2' }}
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </div>

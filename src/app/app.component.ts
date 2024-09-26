@@ -45,6 +45,8 @@ export class AppComponent {
           '/req-loan',
           '/actions',
           '/search',
+          '/deposit-money',
+          '/withdraw-money'
         ];
         this.clerkView = !excluded.includes(event.url);
         console.log(event.url);
