@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -23,6 +23,9 @@ import { EmployeerGeneralComponent } from './general-managment-module/employeer/
 import { LoanStatusBranchComponent } from './branch-managment-module/loan-status/loan-status.component';
 import { MoverDirectiva } from './directives/mover.directive';
 import { CommonModule } from '@angular/common';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { ClientService } from 'src/services/client/client.service';
+import { ClientAccountsComponent } from './clerk-module/client-accounts/client-accounts.component';
 
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
@@ -34,6 +37,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'add-account', component: AddAccountComponent },
   { path: 'view-customer', component: ViewCustomerComponent },
+  { path: 'view-customer/:id', component: ViewCustomerComponent },
   { path: 'deposit-money', component: DepositMoneyComponent },
   { path: 'withdraw-money', component: WithdrawMoneyComponent },
   { path: 'movements-general', component: MovementsComponent },
@@ -43,6 +47,7 @@ const routes: Routes = [
   { path: 'employeer-branch', component: EmployeerBranchComponent },
   { path: 'employeer-general', component: EmployeerGeneralComponent },
   { path: 'loan-status-branch', component: LoanStatusBranchComponent },
+  { path: 'client-accounts', component: ClientAccountsComponent },
 ];
 
 @NgModule({
@@ -59,10 +64,15 @@ const routes: Routes = [
     AddAccountComponent,
     ViewCustomerComponent,
     DepositMoneyComponent,
-    WithdrawMoneyComponent
+    WithdrawMoneyComponent,
+    ClientAccountsComponent
   ],
   imports: [CommonModule,ReactiveFormsModule, BrowserModule, FormsModule, RouterModule.forRoot(routes)],
-  providers: [],
+  providers: [
+    provideClientHydration(),
+    provideHttpClient(withInterceptorsFromDi()),
+    ClientService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

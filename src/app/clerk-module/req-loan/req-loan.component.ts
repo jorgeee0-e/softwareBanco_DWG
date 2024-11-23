@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ClientService } from 'src/services/client/client.service';
+import { ClientLenderService } from 'src/services/client_lender/client-lender.service';
 import { SidebarStateService } from 'src/sidebar-state/sidebar-state.service';
 
 @Component({
@@ -9,7 +11,10 @@ import { SidebarStateService } from 'src/sidebar-state/sidebar-state.service';
 export class ReqLoanComponent implements OnInit {
 
   @ViewChild('content') content!: ElementRef;
-  constructor(private renderer: Renderer2, private sdBrSrv: SidebarStateService) { }
+  constructor(private renderer: Renderer2, 
+              private sdBrSrv: SidebarStateService,
+              private clientService: ClientService,
+              private clSrv: ClientLenderService) { }
 
   ngOnInit() {
   }

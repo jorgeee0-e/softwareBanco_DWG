@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Client } from 'src/app/Interfaces/Interfaces';
+import { ClientLenderService } from 'src/services/client_lender/client-lender.service';
+import { CuentaService } from 'src/services/cuenta/cuenta.service';
 
 interface Account {
   id: string;
@@ -30,10 +34,45 @@ export class ViewCustomerComponent implements OnInit {
   selectedAccount: Account = this.accounts[0];
   transactions: Transaction[] = [];
 
-  constructor() { }
+  clientId: string = '';
+  todasCuentas: Account []=[];
+  client: Client ={
+    id: '',
+    name: '',
+    lastname: '',
+    birthday: new Date,
+    dui: '',
+    address: '',
+    email: '',
+    phone: '',
+    work_place: '',
+    work_start: '',
+    occupation: '',
+    work_email: '',
+    work_phone: '',
+    salary: 0.00,
+    credit_limit: 0 ,
+    role: "Cliente",
+  }
+  constructor( private route: ActivatedRoute,
+               private clSrv: ClientLenderService,
+               private cuentaServicio: CuentaService
+  ) { }
 
   ngOnInit(): void {
-    this.loadTransactions();
+    /* this.loadTransactions(); */
+    this.route.paramMap.subscribe(params=>{
+      this.clientId="/"+params.get('id')|| '';
+      console.log("Id del cliente", this.clientId)
+      });
+      this.getClientById();
+
+      this.cuentaServicio.disparadorDeCuentas.subscribe((cuentas=>{
+        if(cuentas.length>0){
+          this.todasCuentas = cuentas;
+        }
+      }))
+      console.log(this.todasCuentas)
   }
 
   onAccountSelect(account: Account) {
@@ -93,4 +132,18 @@ export class ViewCustomerComponent implements OnInit {
   getAccountTypeLabel(type: 'savings' | 'checking'): string {
     return type === 'savings' ? 'Ahorro' : 'Corriente';
   }
+
+  //Peticion HTTP para cargar el cliente
+  getClientById(){
+    this.clSrv.get(this.clientId).subscribe({
+      next:(result)=> {
+        this.client= result;
+        console.log(this.client);
+      },
+      error:(err)=> {
+        console.log(err);
+      },
+    })
+  }
 }
+

@@ -36,7 +36,7 @@ export class ActionsComponent implements OnInit {
     this.selectedAccount = account;
     this.loadTransactions();
   }
-  @ViewChild('dropd') dropd!:ElementRef;
+  @ViewChild('') dropd!:ElementRef;
 
   updateButtonText(text: string){
     this.dropd.nativeElement.textContent=text;

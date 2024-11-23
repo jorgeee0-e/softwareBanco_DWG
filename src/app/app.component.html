@@ -11,7 +11,7 @@
   <ul class="nav_list">
     <li>
       <i #bxSearch class="bx bx-search" (click)="toggleChange()"></i>
-      <input #buscar type="text" (keydown.enter)="search()" placeholder="Search..." />
+      <input #buscar type="text" (keydown.enter)="getClientByDui(buscar.value)" placeholder="Search..." />
       <span class="tooltip">Buscar</span>
     </li>
     <!-- <li>
@@ -29,14 +29,22 @@
       <span class="tooltip">Crear</span>
       <ul class="dropdown-menu">
         <li>
-          <a href="#addcxModal" class="dropdown-item" data-toggle="modal" >
+          <a href="#addcxModal" 
+             class="dropdown-item"
+             (click)="clientSend.role = 'Cliente'" 
+             data-toggle="modal" >
             <i class="bx bx-user"></i>
-            <span class="links_name">Nuevo Cliente</span>
+            <span 
+            class="links_name"
+            >Nuevo Cliente</span>
           </a>
           <span class="tooltip">Nuevo Cliente</span>
         </li>
         <li>
-          <a href="#addDepModal" class="dropdown-item" data-toggle="modal">
+          <a href="#addcxModal" 
+             class="dropdown-item" 
+             data-toggle="modal"
+             (click)="clientSend.role = 'Dependiente'" >
             <i class="bx bx-user"></i>
             <span class="links_name">Nuevo Dependiente </span>
           </a>
@@ -171,7 +179,7 @@
   <div class="modal-content">
     <form>
       <div class="modal-header">						
-        <h4 class="modal-title">Agregar nuevo <b>cliente</b></h4>
+        <h4 class="modal-title">Agregar nuevo <b>{{clientSend.role}}</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">					
@@ -308,4 +316,4 @@
       </form>
     </div>
     </div>
-    </div>
+  </div>
