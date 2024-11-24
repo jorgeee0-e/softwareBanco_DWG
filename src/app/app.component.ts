@@ -169,7 +169,7 @@ export class AppComponent {
 
     if(cliente){
       console.log(cliente);
-      this.clientService.disparadorDeCliente.emit(cliente);
+      this.clientService.setClient(cliente);
       this.router.navigate(['/search']);
     } else {
       Swal.fire({

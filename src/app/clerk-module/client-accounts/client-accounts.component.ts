@@ -34,13 +34,7 @@ export class ClientAccountsComponent implements OnInit {
     role: "Cliente",
   }
   ngOnInit() { 
-    this.clienteService.disparadorDeCliente.subscribe((client)=>{
-      if(client){
-        this.clientSend = client;
-        console.log(client)
-      }
-      
-    });
+
   }
   
 

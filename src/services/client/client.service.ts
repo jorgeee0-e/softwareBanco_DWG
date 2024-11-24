@@ -6,8 +6,8 @@ import { Client } from 'src/app/Interfaces/Interfaces';
   providedIn: 'root'
 })
 export class ClientService {
-  @Output() disparadorDeCliente: EventEmitter<any> = new EventEmitter(); 
-  private selectedClient= new BehaviorSubject< Client | null>(null);
+/*   @Output() disparadorDeCliente: EventEmitter<any> = new EventEmitter(); 
+ */  private selectedClient= new BehaviorSubject< Client | null>(null);
 
   setClient(client: Client):void{
     this.selectedClient.next(client);

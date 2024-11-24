@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Client } from 'src/app/Interfaces/Interfaces';
+import { Account, Client } from 'src/app/Interfaces/Interfaces';
 import { ClientLenderService } from 'src/services/client_lender/client-lender.service';
 import { CuentaService } from 'src/services/cuenta/cuenta.service';
-
-interface Account {
-  id: string;
-  type: 'savings' | 'checking';
-  number: string;
-  balance: number;
-}
+import { map} from 'rxjs';
+import { AccountsService } from 'src/services/accounts/accounts.service';
 
 interface Transaction {
   id: number;
@@ -25,17 +20,10 @@ interface Transaction {
   styleUrls: ['./view-customer.component.css']
 })
 export class ViewCustomerComponent implements OnInit {
-  accounts: Account[] = [
-    { id: '1', type: 'savings', number: '1234-5678-9012-3456', balance: 5000 },
-    { id: '2', type: 'savings', number: '2345-6789-0123-4567', balance: 3000 },
-    { id: '3', type: 'checking', number: '3456-7890-1234-5678', balance: 2000 }
-  ];
-
-  selectedAccount: Account = this.accounts[0];
-  transactions: Transaction[] = [];
-
+  accPath: string = '';
   clientId: string = '';
-  todasCuentas: Account []=[];
+  accounts: Account []=[];
+  cuentasDeCliente: Account []=[];
   client: Client ={
     id: '',
     name: '',
@@ -54,26 +42,34 @@ export class ViewCustomerComponent implements OnInit {
     credit_limit: 0 ,
     role: "Cliente",
   }
+  selectedAccount: Account = {
+    id: '',
+	  type: 'Ahorro',
+	  balance: 0.00,
+    currency: 'Dolar',
+	  client: this.client,
+  }
   constructor( private route: ActivatedRoute,
                private clSrv: ClientLenderService,
-               private cuentaServicio: CuentaService
+               private cuentaServicio: CuentaService,
+               private accntSrv: AccountsService
   ) { }
 
   ngOnInit(): void {
-    /* this.loadTransactions(); */
     this.route.paramMap.subscribe(params=>{
       this.clientId="/"+params.get('id')|| '';
       console.log("Id del cliente", this.clientId)
       });
-      this.getClientById();
+      
+      this.getAccounts();
 
-      this.cuentaServicio.disparadorDeCuentas.subscribe((cuentas=>{
-        if(cuentas.length>0){
-          this.todasCuentas = cuentas;
+      /* this.cuentaServicio.getCuenta().subscribe(estaCuenta =>{
+        if(estaCuenta){
+          this.selectedAccount = estaCuenta as Account;
         }
-      }))
-      console.log(this.todasCuentas)
-  }
+      }); */
+/*   console.log("cuenta seleccionada: ",this.selectedAccount); */
+}
 
   onAccountSelect(account: Account) {
     this.selectedAccount = account;
@@ -81,43 +77,8 @@ export class ViewCustomerComponent implements OnInit {
   }
 
   loadTransactions() {
-    // Generamos transacciones únicas para cada cuenta
-    const baseTransactions: Transaction[] = [
-      { id: 1, type: 'deposit', amount: 500, date: new Date('2023-08-31'), description: 'Depósito en Agencia Santa Elena' },
-      { id: 2, type: 'withdrawal', amount: 100, date: new Date('2023-09-04'), description: 'Retiro ATM Centro Comercial Galerías' },
-      { id: 3, type: 'transfer', amount: 200, date: new Date('2023-09-10'), description: 'Transferencia a cuenta Cuscatlán' },
-      { id: 4, type: 'deposit', amount: 1000, date: new Date('2023-09-15'), description: 'Depósito de nómina' },
-      { id: 5, type: 'withdrawal', amount: 50, date: new Date('2023-09-20'), description: 'Retiro ATM Metrocentro' }
-    ];
-
-    // Modificamos las transacciones base según la cuenta seleccionada
-    this.transactions = baseTransactions.map(transaction => ({
-      ...transaction,
-      amount: transaction.amount * (parseInt(this.selectedAccount.id) * 0.8 + 0.6), // Variamos los montos
-      date: new Date(transaction.date.getTime() + parseInt(this.selectedAccount.id) * 24 * 60 * 60 * 1000) // Variamos las fechas
-    }));
-
-    // Añadimos algunas transacciones específicas según el tipo de cuenta
-    if (this.selectedAccount.type === 'savings') {
-      this.transactions.push({
-        id: 6,
-        type: 'deposit',
-        amount: 250,
-        date: new Date('2023-09-25'),
-        description: 'Intereses ganados'
-      });
-    } else if (this.selectedAccount.type === 'checking') {
-      this.transactions.push({
-        id: 6,
-        type: 'withdrawal',
-        amount: 75,
-        date: new Date('2023-09-28'),
-        description: 'Pago de cheque #1234'
-      });
-    }
-
     // Ordenamos las transacciones por fecha, de la más reciente a la más antigua
-    this.transactions.sort((a, b) => b.date.getTime() - a.date.getTime());
+/*     this.transactions.sort((a, b) => b.date.getTime() - a.date.getTime()); */
   }
 
   getTransactionTypeIcon(type: 'deposit' | 'withdrawal' | 'transfer'): string {
@@ -129,8 +90,31 @@ export class ViewCustomerComponent implements OnInit {
     }
   }
 
-  getAccountTypeLabel(type: 'savings' | 'checking'): string {
-    return type === 'savings' ? 'Ahorro' : 'Corriente';
+  getAccounts(){
+    this.accntSrv.get(this.accPath).subscribe({
+      next: (result)=> {
+        this.accounts= result;
+        console.log(this.accounts);
+        this.getClientById();
+      },
+      error:(err)=> {
+        console.log(err);
+      },
+    });
+    
+
+  }
+
+  filterAccountsById(){
+    console.log("A filtrar: ",this.accounts)
+    
+    const sliced = this.clientId.startsWith('/') ? this.clientId.slice(1): this.clientId;
+    console.log("Criterio: ",sliced);
+    this.cuentasDeCliente= this.accounts.filter((cuenta: Account)=>{
+      const matches = cuenta.client!= null && cuenta.client.id== sliced;
+      return matches;
+    });
+    console.log("Filtrado",this.cuentasDeCliente);
   }
 
   //Peticion HTTP para cargar el cliente
@@ -143,7 +127,9 @@ export class ViewCustomerComponent implements OnInit {
       error:(err)=> {
         console.log(err);
       },
-    })
-  }
+    });
+    this.filterAccountsById();
+  };
+  
 }
 

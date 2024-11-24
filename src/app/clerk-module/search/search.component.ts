@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account, Client } from 'src/app/Interfaces/Interfaces';
 import { AccountsService } from 'src/services/accounts/accounts.service';
@@ -6,6 +6,7 @@ import { ClientService } from 'src/services/client/client.service';
 import { ClientLenderService } from 'src/services/client_lender/client-lender.service';
 import { CuentaService } from 'src/services/cuenta/cuenta.service';
 import { SidebarStateService } from 'src/sidebar-state/sidebar-state.service';
+import {map, Observable} from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -23,15 +24,16 @@ export class SearchComponent implements OnInit {
               private accntSrv: AccountsService,
               private clSrv: ClientLenderService,
               private router: Router,
-              private cuentaService: CuentaService) { }
+              private cuentaService: CuentaService,
+              private cdr: ChangeDetectorRef) { }
 
   searchAccount: string = '';
   searchDui: string = '';
-  client: Client | null = null;
+  clienteId: string = '';
   path :string = '';
   accounts: Account []=[];
   accPath: string= '';
-  clientSend: Client ={
+  client: Client ={
     id: '',
     name: '',
     lastname: '',
@@ -48,7 +50,26 @@ export class SearchComponent implements OnInit {
     salary: 0.00,
     credit_limit: 0 ,
     role: "Cliente",
-  }
+  };
+  clienteRecibido$!: Observable<Client | null>;
+  clienteEnviar: Client ={
+    id: '',
+    name: '',
+    lastname: '',
+    birthday: new Date,
+    dui: '',
+    address: '',
+    email: '',
+    phone: '',
+    work_place: '',
+    work_start: '',
+    occupation: '',
+    work_email: '',
+    work_phone: '',
+    salary: 0.00,
+    credit_limit: 0 ,
+    role: "Cliente",
+  };
   clienteA: Client []=[];
   accountSend: Account = {
     id: '',
@@ -58,20 +79,21 @@ export class SearchComponent implements OnInit {
 	  client: this.client,
   }
   cuentasDeCliente: Account []=[];
-  ngOnInit(): void {
-    this.clientService.disparadorDeCliente.subscribe(cliente =>{
-      this.clienteA.push(cliente);
-      console.log("Recibiendo data cliente: ",cliente)
-    });   
-    console.log(this.clienteA);
+  ngOnInit() {
+    this.clienteRecibido$=this.clientService.getClient().pipe(map((cliente)=>cliente));
+    this.clientService.getClient().subscribe(esteCliente =>{
+      if(esteCliente){
+        this.client = esteCliente;
+      }
+    })
     this.getAccounts();
-    this.cuentaService.disparadorDeCuentas.subscribe(cuentas=>{
+    /* this.cuentaService.disparadorDeCuentas.subscribe(cuentas=>{
       console.log("Recibiendo Data: ",cuentas);
-      /* if(cuentas.length>0){
+      if(cuentas.length>0){
         this.cuentasDeCliente =cuentas;
         console.log(this.cuentasDeCliente)
-      } */
-    })
+      }
+    }) */
   }
   ngAfterViewInit(){
     const cont = this.content.nativeElement.closest('.home_content');
@@ -102,7 +124,7 @@ export class SearchComponent implements OnInit {
   getClientsById(path: string){
     this.clSrv.get(path).subscribe({
       next:(result)=> {
-        this.clientSend = result;
+        this.clienteEnviar = result;
         console.log(result);
       },
       error:(err)=> {
@@ -123,11 +145,15 @@ export class SearchComponent implements OnInit {
     });
 
   }
-  crearCuenta(){
-    this.accountSend.client= this.clientSend;
+  crearCuenta(){ 
+     
+    this.accountSend.client= this.clienteEnviar;
     console.log(this.accountSend);
+    
     this.accntSrv.post(this.accountSend).subscribe({
       next:(value)=> {
+        console.log(value);
+        const cuentaRecienCreada = value.Cuenta;
         Swal.fire({
           position:"center",
           icon:"success",
@@ -135,15 +161,10 @@ export class SearchComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(()=>{
-          this.clientService.disparadorDeCliente.emit({
-            cliente: this.clientSend
-          });
-          console.log("emitiendo",this.clientSend);
-          const cuentasFiltradas = this.filtrar(this.clientSend.dui);
-          this.cuentaService.disparadorDeCuentas.emit({
-            cuentas: cuentasFiltradas,
-          })
-          this.router.navigate(['/search']);
+          this.clientService.setClient(this.clienteEnviar);
+          console.log("emitiendo",this.clienteEnviar);
+          this.cuentaService.setCuenta(cuentaRecienCreada)
+          this.router.navigate(['/view-customer',this.clienteEnviar]);
         }
           
         )
@@ -178,11 +199,14 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  onSelectOption(event: Event, idClient: string){
+  onSelectOption(event: Event, idClient: string):void{
     this.path="/"+idClient;
     this.getClientsById(this.path);
     console.log(idClient);
     console.log(this.path);
+  }
+  getCuenta(cuenta: string){
+    console.log(cuenta);
   }
   filtrar(dui:string){
     this.cuentasDeCliente = this.accounts.filter((element:Account)=>

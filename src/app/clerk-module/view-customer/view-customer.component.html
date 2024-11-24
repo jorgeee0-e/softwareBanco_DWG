@@ -4,19 +4,19 @@
       <h2>Mis Cuentas</h2>
       
       <div class="accounts-container">
-        <div class="account-card" *ngFor="let account of accounts" 
+<!--         <div class="account-card" *ngFor="let account of accounts" 
              [class.selected]="account.id === selectedAccount.id"
              (click)="onAccountSelect(account)">
-          <div class="account-type">{{ getAccountTypeLabel(account.type) }}</div>
+          <div class="account-type">{{ selectedAccount.type }}</div>
           <div class="account-number">{{ account.number }}</div>
           <div class="account-balance">{{ account.balance | currency:'USD':'symbol':'1.2-2' }}</div>
-        </div>
+        </div> -->
       </div>
 
       <h3>Movimientos de la Cuenta</h3>
-      <p class="selected-account">Cuenta seleccionada: {{ selectedAccount.number }}</p>
+      <p class="selected-account">Cuenta seleccionada: {{ selectedAccount.id }}</p>
       
-      <div class="transaction-list">
+<!--       <div class="transaction-list">
         <div class="transaction-item" *ngFor="let transaction of transactions">
           <div class="transaction-icon">
             <i [class]="getTransactionTypeIcon(transaction.type)"></i>
@@ -29,7 +29,7 @@
             {{ transaction.type === 'deposit' ? '+' : '-' }}{{ transaction.amount | currency:'USD':'symbol':'1.2-2' }}
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

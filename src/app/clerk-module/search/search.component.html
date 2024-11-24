@@ -43,10 +43,13 @@
             <div class="row-nr"></div>
             <div class="card-body">
               <div class="row justify-content-center cliente">
-                <div class="row justify-content-center cxname">
-                  {{clientSend?.name}} {{clientSend?.lastname}}
+                <div class="row justify-content-center cxname"  *ngIf="clienteRecibido$ && (clienteRecibido$|async)?.name && (clienteRecibido$|async)?.lastname">
+                  {{(clienteRecibido$|async)?.name}} {{(clienteRecibido$|async)?.lastname}}
                 </div>
-                <div class="row justify-content-center dui">DUI: {{clientSend?.dui}}</div>
+                <ng-template #loading>
+                  Loading client information...
+                </ng-template>
+                <div class="row justify-content-center dui">DUI: {{(clienteRecibido$|async)?.dui}}</div>
                 <button
                   class="btn btn-secondary mt-3"
                   style="border-color: #1d1b31; background-color: #1d1b31"
@@ -67,7 +70,7 @@
                 <div class="app-header mb-3">
                   <div class="header-label">Cuentas</div>
                 </div>
-                <div *ngFor="let cuenta of cuentasDeCliente" class="app-row">
+                <div *ngFor="let cuenta of cuentasDeCliente" class="app-row" (click)="getCuenta(cuenta.id)">
                   <div class="row-nr">{{cuenta.id}}</div>
                   <div class="row-label">{{cuenta.type}}</div>
                   <div class="row-icon"><i class="fa fa-angle-right"></i></div>
@@ -78,7 +81,8 @@
                 <a  class="raised-link" 
                     href="#createAccount" 
                     data-toggle="modal" 
-                    (click)=" onSelectOption($event,clientSend?.id || '')">+ Agregar cuenta</a>
+                    (click)="onSelectOption($event, client.id)">+ Agregar cuenta</a>
+
               </div>
             </div>
           </div>
@@ -91,9 +95,9 @@
 <div id="createAccount" class="modal fade" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form >
+      <form (ngSubmit)="crearCuenta()">
         <div class="modal-header">
-          <h4 class="modal-title">Crear cuenta para: {{clientSend?.name}} {{clientSend?.lastname}}</h4>
+          <h4 class="modal-title">Crear cuenta para: {{(clienteRecibido$|async)?.name}} {{(clienteRecibido$|async)?.lastname}}</h4>
           <button
             type="button"
             class="close"

@@ -192,9 +192,7 @@ export class AddCustomerComponent implements OnInit {
   getAccounts(){
     this.accntSrv.get(this.accPath).subscribe({
       next: (result)=> {
-        this.cuentaServicio.disparadorDeCuentas.emit({
-          cuentas: result,
-        })
+        this.cuentaServicio.setCuenta(result),
         console.log(result)
       },
       error:(err)=> {
@@ -209,6 +207,7 @@ export class AddCustomerComponent implements OnInit {
     this.accountSend.client= this.clientSend;
     this.accntSrv.post(this.accountSend).subscribe({
       next:(result)=>{
+        console.log(result)
         Swal.fire({
           position:"center",
           icon:"success",

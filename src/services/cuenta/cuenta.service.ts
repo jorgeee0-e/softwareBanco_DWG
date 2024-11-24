@@ -6,13 +6,23 @@ import { Account } from 'src/app/Interfaces/Interfaces';
   providedIn: 'root'
 })
 export class CuentaService {
-  @Output() disparadorDeCuentas: EventEmitter<any> = new EventEmitter()
-  private selectedAccount= new BehaviorSubject<Account[] | null > (null);
+  private selectedAccount= new BehaviorSubject<Account | Account[]>({
+    id: 'string',
+    type: 'Ahorro',
+    balance: 0.00,
+    currency: 'Dolar',
+    client: null,
+  });
 
-  setCuenta(cuenta: Account[]){
-    this.selectedAccount.next(cuenta);
+  setCuenta(cuenta: Account | Account[]){
+    if(Array.isArray(cuenta)){
+      this.selectedAccount.next(cuenta)
+    } else{
+      this.selectedAccount.next([cuenta]);
+    }
+    
   }
-  getCuenta(): Observable<Account[]| null>{
+  getCuenta(): Observable<Account | Account[]>{
     return this.selectedAccount.asObservable();
   }
 constructor() { }
