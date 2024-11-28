@@ -50,14 +50,15 @@ h2, h3 {
 }
 
 .account-type {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: #b4b4b4;
   margin-bottom: 5px;
 }
 
 .account-number {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #ffffff;
+  font-weight: bolder;
   margin-bottom: 10px;
 }
 
@@ -86,6 +87,14 @@ h2, h3 {
   padding: 15px;
   border-radius: 4px;
   transition: background-color 0.3s;
+}
+.btn-primary{
+  border-color: white;
+  background-color: #323548;
+}
+.btn-primary:hover, .btn-primary.selected {
+  background-color: #3a3f5a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .transaction-item:hover {
@@ -152,4 +161,6 @@ h2, h3 {
     align-self: flex-end;
     margin-top: 10px;
   }
+
+
 }

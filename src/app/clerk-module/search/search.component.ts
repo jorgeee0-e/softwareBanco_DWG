@@ -145,6 +145,17 @@ export class SearchComponent implements OnInit {
     });
 
   }
+  getAccountsById(id: string, callback:()=>void){
+    this.accntSrv.get('/'+id).subscribe({
+      next: (result)=> {
+       this.accountSend= result;
+       callback();
+      },
+      error:(err)=> {
+        console.log(err);
+      },
+    });
+  }
   crearCuenta(){ 
      
     this.accountSend.client= this.clienteEnviar;
@@ -207,6 +218,13 @@ export class SearchComponent implements OnInit {
   }
   getCuenta(cuenta: string){
     console.log(cuenta);
+    this.getAccountsById(cuenta,()=>{
+      console.log(this.accountSend);
+      this.cuentaService.setCuenta(this.accountSend);
+      this.router.navigate(['/view-customer',this.accountSend.client?.id])
+    });
+    
+    /* this.cuentaService.setCuenta(): */
   }
   filtrar(dui:string){
     this.cuentasDeCliente = this.accounts.filter((element:Account)=>

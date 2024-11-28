@@ -231,7 +231,7 @@ ol{padding:0;margin:0}
 .kmx-typography--fine-print{color:#616161;font-size:.75rem;line-height:1.33}
 .kmx-typography--emphasis-1,.kmx-typography--fine-print{font-family:Roboto,Verdana,Arial,sans-serif;font-weight:300}
 .kmx-typography--emphasis-1{color:#00a9e4;font-size:1.88rem;letter-spacing:-.5px;line-height:1.13}
-.kmx-typography--flag-label{background-color:#ff9800;color:#212121;display:inline-block;font-family:Roboto,Verdana,Arial,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.5px;line-height:1.33;text-transform:uppercase;padding:4px 8px}
+.kmx-typography--flag-label{background-color:#ff9800;color:#212121;display:inline-block;font-family:Roboto,Verdana,Arial,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.5px;line-height:1.33;text-transform:uppercase;padding:4px 12px}
 .kmx-typography--align-left{text-align:left}
 .kmx-typography--align-right{text-align:right}
 .kmx-typography--font-main{font-family:Montserrat,Trebuchet MS,Helvetica,sans-serif}

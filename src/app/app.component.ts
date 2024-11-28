@@ -91,7 +91,7 @@ export class AppComponent {
   bManagerOptions() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const excluded = ['/employeer-branch', '/loan-status-branch'];
+        const excluded = ['/employeer-branch', '/loan-status-branch','/loan-status',];
         this.bManager = !excluded.includes(event.url);
       }
     });

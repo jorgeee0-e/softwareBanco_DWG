@@ -3,14 +3,18 @@
   <div class="row">
     <div class="deposit-money-container">
       <div class="deposit-money-card">
-        <h2>Realizar Depósito</h2>
+        <h2>Realizar Depósito - Cuenta {{cuentaADepositar.type}}</h2>
         <form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="accountNumber">Número de Cuenta</label>
-            <select id="accountNumber" formControlName="accountNumber">
+            <label for="accountNumber">Número de cuenta</label>
+<!--             <input type="number" id="accountNumber" formControlName="accountNumber"  >
+ -->            <div class="fomat">
+                  {{cuentaADepositar.id}}
+                </div>
+<!--             <select id="accountNumber" formControlName="accountNumber">
               <option value="">Seleccione una cuenta</option>
               <option *ngFor="let account of accounts" [value]="account">{{account}}</option>
-            </select>
+            </select> -->
           </div>
   
           <div class="form-group">
@@ -20,7 +24,7 @@
            <!--Campo para agregar el monto a depositar-->
           <div class="form-group">
             <label for="depositType">Tipo de Depósito</label>
-            <select id="depositType" formControlName="depositType">
+            <select id="depositType" formControlName="depositType"  [(ngModel)]="selectedDepositType">
               <option value="">Seleccione el tipo de depósito</option>
               <option *ngFor="let type of depositTypes" [value]="type">{{type}}</option>
             </select>
@@ -28,12 +32,34 @@
   
           <div class="form-group">
             <label for="depositorName">Nombre del Depositante</label>
-            <input type="text" id="depositorName" formControlName="depositorName">
+            <div class="fomat">
+              {{cuentaADepositar.client?.name}} {{cuentaADepositar.client?.lastname}}
+            </div>
           </div>
   
           <div class="form-group">
             <label for="depositorId">ID del Depositante</label>
-            <input type="text" id="depositorId" formControlName="depositorId">
+            <div class="fomat">
+              {{cuentaADepositar.client?.id}} 
+            </div>
+       </div>
+          <div class="form-group" *ngIf="selectedDepositType=='Transferencia'">
+            <label for="dui">Cliente a depositar</label>
+            <div class="input-group">
+              <input #dui type="text" id="dui" formControlName="dui" placeholder="Ingrese el dui" (keydown.enter)="getAccountsByDui(dui.value)">
+              <i (click)="getAccountsByDui(dui.value)" class='bx bx-search-alt-2'></i>
+            </div>
+          </div>
+
+          <!-- Dropdown que muestra las cuentas del cliente buscado -->
+          <div class="form-group" *ngIf="accountsFiltradas && accountsFiltradas.length > 0">
+            <label for="cuentaQueRecibe">Seleccione Cuenta a transferir</label>
+            <select #cuentaIdEnviar id="cuentaQueRecibe" formControlName="cuentaQueRecibe"  
+                    
+                    (change)="onAccountChange(cuentaIdEnviar.value)">
+              <option value="">Seleccione la cuenta</option>
+              <option *ngFor="let cuenta of accountsFiltradas" [value]="cuenta.id">{{cuenta.id}}</option>
+            </select>
           </div>
   
           <div class="form-group">

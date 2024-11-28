@@ -1,18 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Account, Client } from 'src/app/Interfaces/Interfaces';
+import { Account, Client, MovementType, Transaction } from 'src/app/Interfaces/Interfaces';
 import { ClientLenderService } from 'src/services/client_lender/client-lender.service';
 import { CuentaService } from 'src/services/cuenta/cuenta.service';
 import { map} from 'rxjs';
 import { AccountsService } from 'src/services/accounts/accounts.service';
-
-interface Transaction {
-  id: number;
-  type: 'deposit' | 'withdrawal' | 'transfer';
-  amount: number;
-  date: Date;
-  description: string;
-}
+import { MovementsService } from 'src/services/movements-service/movements-service.service';
 
 @Component({
   selector: 'app-view-customer',
@@ -49,10 +42,31 @@ export class ViewCustomerComponent implements OnInit {
     currency: 'Dolar',
 	  client: this.client,
   }
+  cuentaSeleccionada: Account = {
+    id: '',
+	  type: 'Ahorro',
+	  balance: 0.00,
+    currency: 'Dolar',
+	  client: this.client,
+  }
+  transactions: Transaction = {
+    id: '',
+    description: '',
+    type: 'deposit',
+    amount: 0.00,
+    date: new Date(),
+    account_transmitter: this.selectedAccount,
+    account_receiver: this.selectedAccount,
+
+  }
+
+  todasTransacciones: Transaction[]=[]
+  transaccionesDeCliente: Transaction[]=[]
   constructor( private route: ActivatedRoute,
                private clSrv: ClientLenderService,
                private cuentaServicio: CuentaService,
-               private accntSrv: AccountsService
+               private accntSrv: AccountsService,
+               private mvtSrv: MovementsService,
   ) { }
 
   ngOnInit(): void {
@@ -62,6 +76,7 @@ export class ViewCustomerComponent implements OnInit {
       });
       
       this.getAccounts();
+      this.getMovements();
 
       /* this.cuentaServicio.getCuenta().subscribe(estaCuenta =>{
         if(estaCuenta){
@@ -73,19 +88,15 @@ export class ViewCustomerComponent implements OnInit {
 
   onAccountSelect(account: Account) {
     this.selectedAccount = account;
-    this.loadTransactions();
   }
 
-  loadTransactions() {
-    // Ordenamos las transacciones por fecha, de la más reciente a la más antigua
-/*     this.transactions.sort((a, b) => b.date.getTime() - a.date.getTime()); */
-  }
 
-  getTransactionTypeIcon(type: 'deposit' | 'withdrawal' | 'transfer'): string {
+  getTransactionTypeIcon(type: 'deposit' | 'withdrawal' | 'transfer_in'| 'transfer_out' | 'vacio'): string {
     switch(type) {
       case 'deposit': return 'bx bx-down-arrow-alt';
       case 'withdrawal': return 'bx bx-up-arrow-alt';
-      case 'transfer': return 'bx bx-transfer';
+      case 'transfer_in': return 'bx bx-transfer';
+      case 'transfer_out': return 'bx bx-transfer';
       default: return 'bx bx-question-mark';
     }
   }
@@ -103,6 +114,25 @@ export class ViewCustomerComponent implements OnInit {
     });
     
 
+  }
+
+  getMovements(){
+    this.mvtSrv.get('').subscribe({
+      next:(value)=> {
+        this.todasTransacciones = value;
+        console.log(this.todasTransacciones);
+      },
+      error:(err)=> {
+        console.log(err);
+      },
+    })
+  }
+
+  filterMovements(){
+    this.transaccionesDeCliente = this.todasTransacciones.filter((transaccion: Transaction)=> {
+      const cuentas = transaccion.account_transmitter.id== this.selectedAccount.id;
+      return cuentas
+    })
   }
 
   filterAccountsById(){
@@ -130,6 +160,21 @@ export class ViewCustomerComponent implements OnInit {
     });
     this.filterAccountsById();
   };
+  getCuentaById(idCuenta: string){
+    this.accntSrv.get("/"+idCuenta).subscribe({
+      next: (value)=> {
+        console.log(value)
+        this.cuentaSeleccionada = value;
+      },
+      error:(err)=> {
+        console.log(err);
+      },
+    })
+  }
   
+  getAccountToReview(idCuenta: string){
+    this.getCuentaById(idCuenta);
+    this.cuentaServicio.setCuenta(this.selectedAccount);
+  }
 }
 

@@ -44,40 +44,35 @@
                           <div class="row mb-3">
                             <div class="row g-3">
                               <div class="col-md">
-                                <div class="form-floating">
-                                  <input
-                                    type="email"
-                                    class="form-control"
-                                    id="floatingInputGridClient"
-                                    placeholder="name@example.com"
-                                    value="Juan Perez Pereira"
-                                  />
-                                  <label for="floatingInputGrid">Cliente</label>
+                                <div class="form-floating">                                  
+                                  <div class="form-control mt-3"
+                                       id="floatingInputGridClient"
+                                       >{{client.name}}
+
+                                  </div>
+                                  <label for="floatingInputGrid">Cliente </label>
                                 </div>
                               </div>
                               <div class="col-md">
-                                <div class="form-floating">
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="floatingInputGridSalario"
-                                    placeholder="0.00"
-                                    value="2,000"
-                                    disabled
-                                  />
+                                <div class="form-floating">                                
+                                  <div class="form-control mt-3"
+                                       id="floatingInputGridSalario"
+                                       >$ {{client.salary.toFixed(2)}}
+
+                                  </div>
                                   <label for="floatingInputGrid">Salario</label>
                                 </div>
                               </div>
                               <div class="col-md">
-                                <div class="form-floating">
-                                  <input
+                                <div class="form-floating mt-3">
+                                  <input #cantidad
                                     type="email"
                                     class="form-control"
                                     id="floatingInputGridAmount"
                                     placeholder="$0.00"
-                                    value="50,000"
+                                    value=""
                                   />
-                                  <label
+                                  <label 
                                     for="floatingInputGrid"
                                     style="background-color: transparent"
                                     >Cantidad a prestar</label
@@ -85,17 +80,19 @@
                                 </div>
                               </div>
                               <div class="col-md">
-                                <div class="form-floating">
-                                  <select
+                                <div class="form-floating mt-3">
+                                  <select 
                                     class="form-select"
+                                    [(ngModel)]="loanTerm"
+                                    (change)="onLoanChange($event)"
                                     id="floatingSelectGrid"
                                   >
                                     <option selected>Seleccione el tiempo</option>
-                                    <option value="1">12 Meses</option>
-                                    <option value="2">24 Meses</option>
-                                    <option value="3">36 Meses</option>
-                                    <option value="3">48 Meses</option>
-                                    <option value="3">60 Meses</option>
+                                    <option value="12">12 Meses</option>
+                                    <option value="24">24 Meses</option>
+                                    <option value="36">36 Meses</option>
+                                    <option value="48">48 Meses</option>
+                                    <option value="60">60 Meses</option>
                                   </select>
                                   <label for="floatingSelectGrid"
                                     >Termino del préstamo</label
@@ -104,65 +101,29 @@
                               </div>
                             </div>
                           </div>
-                          <!-- <div class="finance-details">
-                                            <div class="finance-inputs"><span class="finance-input-credit-score">
-                                                    <div class="mdc-select kmx-select" role="listbox" id="credit-score">
-                                                        <div class="mdc-select__surface mdc-ripple-upgraded" tabindex="0"
-                                                            style="width: 305px; --mdc-ripple-fg-size:183.656px; --mdc-ripple-fg-scale:1.74878; --mdc-ripple-fg-translate-start:170.859px, -57.1406px; --mdc-ripple-fg-translate-end:61.2188px, -63.8281px;">
-                                                            <div class="mdc-select__label mdc-select__label--float-above">Credit
-                                                                Score</div>
-                                                            <div class="mdc-select__selected-text">Fair (580-669 FICO®
-                                                                Score)</div>
-                                                            <div class="mdc-select__bottom-line"></div>
-                                                        </div>
-                                                        <div class="mdc-simple-menu mdc-select__menu mdc-select__credit" style="left: 852.813px; top: 290.313px; transform-origin: center 104px 0px;">
-                                                            <ul class="mdc-list mdc-simple-menu__items">
-                                                                <li class="mdc-list-item" tabindex="0" data-down="3.45" data-up="4.5" role="option" id="0">Excellent
-                                                                    (800+ FICO® Score)</li>
-                                                                <li class="mdc-list-item" tabindex="0" data-down="4" data-up="6" role="option"
-                                                                    aria-selected="false" id="1">Very Good (740-799 FICO®
-                                                                    Score)</li>
-                                                                <li class="mdc-list-item" tabindex="0" data-down="5" data-up="10" role="option" id="2">Good
-                                                                    (670-739 FICO® Score)</li>
-                                                                <li class="mdc-list-item" tabindex="0" data-down="8" data-up="18" role="option" id="3"
-                                                                    aria-selected="true">Fair (580-669 FICO® Score)</li>
-                                                                <li class="mdc-list-item" tabindex="0" data-down="14" data-up="24" role="option" id="4">Challenged
-                                                                    (&lt; 580 FICO® Score)</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </span>
-                                                <div class="finance-input-downpayment">
-                                                    <div class="kmx-text-field mdc-text-field--upgraded">
-                                                        <div class="" style="padding-bottom: 8px; position: absolute; bottom: 0px;">
-                                                            <aside class="kmx-typography--body-2">$</aside>
-                                                        </div><input type="tel" class="mdc-text-field__input" value="2,000"
-                                                            style="padding-left: 16px; padding-right: 0px;"><label class="mdc-text-field__label mdc-text-field__label--float-above">Down
-                                                            Payment</label>
-                                                        <div class="mdc-text-field__bottom-line"></div>
-                                                    </div>
-                                                </div><span class="finance-input-term">
-                                                    <div class="mdc-select kmx-select" role="listbox" id="term">
-                                                        <div class="mdc-select__surface mdc-ripple-upgraded" tabindex="0"
-                                                            style="width: 124px; --mdc-ripple-fg-size:91.8281px; --mdc-ripple-fg-scale:1.88363; --mdc-ripple-fg-translate-start:8.63281px, -5.22656px; --mdc-ripple-fg-translate-end:30.6094px, -17.9141px;">
-                                                            <div class="mdc-select__label mdc-select__label--float-above">Term</div>
-                                                            <div class="mdc-select__selected-text">48 months</div>
-                                                            <div class="mdc-select__bottom-line"></div>
-                                                        </div>
-                                                        <div class="mdc-simple-menu mdc-select__menu  mdc-select__month" style="left: 1341.95px; top: 386.313px; transform-origin: center 8px 0px;">
-                                                            <ul class="mdc-list mdc-simple-menu__items">
-                                                                <li class="mdc-list-item" tabindex="0" role="option" data-month="36">36 months</li>
-                                                                <li class="mdc-list-item" tabindex="0" role="option" data-month="48" aria-selected="true">48 months</li>
-                                                                <li class="mdc-list-item" tabindex="0" role="option" data-month="60">60 months</li>
-                                                                <li class="mdc-list-item" tabindex="0" role="option" data-month="72">72 months</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </span>
-                                            </div>
-                                        </div> -->
+                          <div
+                            class="row justify-content-center align-items-center g-2"
+                          >
+                          <div class="col-6 mt-2">
+                            <div class="d-grid gap-2">
+                              <button
+                                class="btn btn-secondary btn-lg"
+                                style="
+                                  border-color: #1d1b31;
+                                  background-color: #1d1b31;
+                                "
+                              >
+                                <span class="svg-icon-wrapper"
+                                  >Pre-Calificar</span
+                                >
+                              </button>
+                            </div>
+                          </div>
+                          </div>
+                          
+                          
   
-                          <div class="finance-section estimated-terms-container">
+                          <div class="finance-section estimated-terms-container mt-5">
                             <div class="finance-column-left estimated-terms-list">
                               <div class="finance-title">
                                 Desglose de pagos estimado**
@@ -227,19 +188,9 @@
                                 </div>
                               </div>
                             </div>
-                            <!--                                         <div class="finance-column-right">
-                                                <div class="estimated-terms-summary-container">
-                                                    <div class="estimated-terms-summary">
-                                                        <div class="estimated-terms-summary-item value"> $<span class="monthly">78.78</span></div>
-                                                        <div class="estimated-terms-summary-item key">Mensualidad</div>
-                                                        <div class="estimated-terms-summary-item value"><span class="percentup">6</span><span class="percent">%</span></div>
-                                                        <div class="estimated-terms-summary-item key">Tasa de interés</div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                           </div>
                           <div class="finance-title">
-                            Resumen de condiciones de crédito ($5,000)
+                            Resumen de condiciones de crédito 
                           </div>
                           <div class="container">
                             <div class="row">
@@ -291,7 +242,7 @@
                                     "
                                   >
                                     <span class="svg-icon-wrapper"
-                                      >Get Pre-Qualified now</span
+                                      >Enviar</span
                                     >
                                   </button>
                                 </div>
@@ -299,11 +250,8 @@
                             </div>
                           </div>
                           <div class="finance-disclaimer">
-                            **Aca ira un disclaimer financiero que no se que le
-                            pondre pero algo se me ocurrira. **Aca ira un
-                            disclaimer financiero que no se que le pondre pero
-                            algo se me ocurrira **Aca ira un disclaimer financiero
-                            que no se que le pondre pero algo se me ocurrira
+                            **Comisión por desembolso calculada como el 1% del monto a prestar. Seguro de vida calculado como el 0.1% del monto inicial de la mensualidad. 
+                            Seguro de deuda calculado como el 0.05% del monto inicial de la mensualidad
                           </div>
                         </div>
                       </div>

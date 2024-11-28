@@ -30,7 +30,7 @@ import { ClientAccountsComponent } from './clerk-module/client-accounts/client-a
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
   { path: 'add-customer', component: AddCustomerComponent },
-  { path: 'req-loan', component: ReqLoanComponent },
+  { path: 'req-loan/:id', component: ReqLoanComponent },
   { path: 'loan-status', component: LoanStatusComponent },
   { path: 'actions', component: ActionsComponent },
   { path: 'login', component: LoginComponent },

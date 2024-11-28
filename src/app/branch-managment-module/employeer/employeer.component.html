@@ -1,196 +1,198 @@
-<div class=" home_content container">
-  <div class="table-wrapper">
-    <div class="table-title">
-      <div class="row">
-          <div class="col-sm-6">
-            <h2>Lista de Empleados</h2>
-          </div>
-          <div class="col-sm-6">
-            <a href="#addEmployeerModal" class="btn btn-success" data-toggle="modal">
-              <i class="material-icons">&#xE147;</i> 
-              <span>Agregar</span>
-            </a>
-          </div>
+<div class=" home_content d-flex justify-content-center mover">
+  <div  #content appmover class="container">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6">
+              <h2>Lista de Empleados</h2>
+            </div>
+            <div class="col-sm-6">
+              <a href="#addEmployeerModal" class="btn btn-success" data-toggle="modal">
+                <i class="material-icons">&#xE147;</i> 
+                <span>Agregar</span>
+              </a>
+            </div>
+        </div>
       </div>
-    </div>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <!--<th>
-              <span class="custom-checkbox">
-              <input type="checkbox" id="selectAll">
-              <label for="selectAll"></label>
-              </span>
-          </th> -->
-          <th>Usuario</th> 
-          <th>Nombre Completo</th> 
-          <th>Rol</th> 
-          <th>Estado</th> 
-          <th>Acciones</th>          
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <!--<td>
-          <span class="custom-checkbox">
-            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-            <label for="checkbox1"></label>
-          </span>
-        </td> -->
-            <td>EnriqueTorres2205</td>
-            <td>David Enrique Torres Rivas</td>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <!--<th>
+                <span class="custom-checkbox">
+                <input type="checkbox" id="selectAll">
+                <label for="selectAll"></label>
+                </span>
+            </th> -->
+            <th>Usuario</th> 
+            <th>Nombre Completo</th> 
+            <th>Rol</th> 
+            <th>Estado</th> 
+            <th>Acciones</th>          
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <!--<td>
+            <span class="custom-checkbox">
+              <input type="checkbox" id="checkbox1" name="options[]" value="1">
+              <label for="checkbox1"></label>
+            </span>
+          </td> -->
+              <td>EnriqueTorres2205</td>
+              <td>David Enrique Torres Rivas</td>
+              <td>Gerente de Banco</td>
+              <td>
+                <span class="badge text-bg-success">Activo</span>
+              </td>
+              <td>
+                  <a href="#editEmployeerModal" class="edit" data-toggle="modal">
+                    <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                  </a>
+                  <a href="#deleteEmployeerModal" class="delete" data-toggle="modal">
+                    <i class='bx bxs-downvote'></i>
+                  </a>
+              </td>
+          </tr>
+          <tr>
+            <td>Jorge Menéndez</td>
+            <td>Jorge Luis Menéndez Rosales</td>
+            <td>Cajero</td>
+            <td>
+              <span class="badge text-bg-warning">Espera de Aprobación</span>
+            </td>
+            <td>
+              <a href="#editEmployeerModal" class="edit" data-toggle="modal">
+                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+              </a>
+              <a href="#deleteEmployeerModal" class="delete" data-toggle="modal">
+                <i class='bx bxs-downvote'></i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>BeatrizRivas1805</td>
+            <td>Sara Beatriz Torres Rivas</td>
             <td>Gerente de Banco</td>
             <td>
-              <span class="badge text-bg-success">Activo</span>
+              <span class="badge text-bg-danger">Inactivo</span>
             </td>
             <td>
-                <a href="#editEmployeerModal" class="edit" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                </a>
-                <a href="#deleteEmployeerModal" class="delete" data-toggle="modal">
-                  <i class='bx bxs-downvote'></i>
-                </a>
+              <a href="#editEmployeerModal" class="edit" data-toggle="modal">
+                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+              </a>
+              <a href="#deleteEmployeerModal" class="delete" data-toggle="modal">
+                <i class='bx bxs-downvote'></i>
+              </a>
             </td>
-        </tr>
-        <tr>
-          <td>Jorge Menéndez</td>
-          <td>Jorge Luis Menéndez Rosales</td>
-          <td>Cajero</td>
-          <td>
-            <span class="badge text-bg-warning">Espera de Aprobación</span>
-          </td>
-          <td>
-            <a href="#editEmployeerModal" class="edit" data-toggle="modal">
-              <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-            </a>
-            <a href="#deleteEmployeerModal" class="delete" data-toggle="modal">
-              <i class='bx bxs-downvote'></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>BeatrizRivas1805</td>
-          <td>Sara Beatriz Torres Rivas</td>
-          <td>Gerente de Banco</td>
-          <td>
-            <span class="badge text-bg-danger">Inactivo</span>
-          </td>
-          <td>
-            <a href="#editEmployeerModal" class="edit" data-toggle="modal">
-              <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-            </a>
-            <a href="#deleteEmployeerModal" class="delete" data-toggle="modal">
-              <i class='bx bxs-downvote'></i>
-            </a>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
-    <!--<div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-          <ul class="pagination">
-              <li class="page-item disabled"><a href="#">Previous</a></li>
-              <li class="page-item"><a href="#" class="page-link">1</a></li>
-              <li class="page-item"><a href="#" class="page-link">2</a></li>
-              <li class="page-item active"><a href="#" class="page-link">3</a></li>
-              <li class="page-item"><a href="#" class="page-link">4</a></li>
-              <li class="page-item"><a href="#" class="page-link">5</a></li>
-              <li class="page-item"><a href="#" class="page-link">Next</a></li>
-          </ul>
-        </div>
-      </div> -->
-</div>
-
-<!-- Agregar Modal HTML -->
-<div id="addEmployeerModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form>
-        <div class="modal-header">						
-          <h4 class="modal-title text-center">Agregar Nuevo Empleado</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">	
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" class="form-control" required>
-          </div>			
-          <div class="form-group mt-3">
-            <label>Gerente de la Sucursal</label>
-            <div  class="dropdown">
-              <button #dropd class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Seleccione el Gerente de la Sucursal
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" (click)="updateButtonText('David Enrique Torres Rivas')">David Enrique Torres Rivas</a></li>
-                <li><a class="dropdown-item" (click)="updateButtonText('Sara Beatriz Torres Rivas')">Sara Beatriz Torres Rivas</a></li>
-              </ul>
-            </div>          
-          </div>				
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button class="btn btn-success" data-dismiss="modal">Aceptar</button>
-          <!--<input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">--> 
-       </div>
-      </form>
+          </tr>
+  
+        </tbody>
+      </table>
+      <!--<div class="clearfix">
+          <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+            <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+            </ul>
+          </div>
+        </div> -->
+  </div>
+  
+  <!-- Agregar Modal HTML -->
+  <div id="addEmployeerModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form>
+          <div class="modal-header">						
+            <h4 class="modal-title text-center">Agregar Nuevo Empleado</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">	
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" class="form-control" required>
+            </div>			
+            <div class="form-group mt-3">
+              <label>Gerente de la Sucursal</label>
+              <div  class="dropdown">
+                <button #dropd class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Seleccione el Gerente de la Sucursal
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="updateButtonText('David Enrique Torres Rivas')">David Enrique Torres Rivas</a></li>
+                  <li><a class="dropdown-item" (click)="updateButtonText('Sara Beatriz Torres Rivas')">Sara Beatriz Torres Rivas</a></li>
+                </ul>
+              </div>          
+            </div>				
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-success" data-dismiss="modal">Aceptar</button>
+            <!--<input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">--> 
+         </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- Agregar Modal HTML -->
-<div id="editEmployeerModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form>
-        <div class="modal-header">						
-          <h4 class="modal-title text-center">Editar Empleado</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">	
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" class="form-control" required>
-          </div>			
-          <div class="form-group mt-3">
-            <label>Gerente de la Sucursal</label>
-            <div  class="dropdown">
-              <button #dropd class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Seleccione el Gerente de la Sucursal
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" (click)="updateButtonText('David Enrique Torres Rivas')">David Enrique Torres Rivas</a></li>
-                <li><a class="dropdown-item" (click)="updateButtonText('Sara Beatriz Torres Rivas')">Sara Beatriz Torres Rivas</a></li>
-              </ul>
-            </div>          
-          </div>				
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button class="btn btn-success" data-dismiss="modal">Aceptar</button>
-          <!--<input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">--> 
-       </div>
-      </form>
+  
+  <!-- Agregar Modal HTML -->
+  <div id="editEmployeerModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form>
+          <div class="modal-header">						
+            <h4 class="modal-title text-center">Editar Empleado</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">	
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" class="form-control" required>
+            </div>			
+            <div class="form-group mt-3">
+              <label>Gerente de la Sucursal</label>
+              <div  class="dropdown">
+                <button #dropd class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Seleccione el Gerente de la Sucursal
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" (click)="updateButtonText('David Enrique Torres Rivas')">David Enrique Torres Rivas</a></li>
+                  <li><a class="dropdown-item" (click)="updateButtonText('Sara Beatriz Torres Rivas')">Sara Beatriz Torres Rivas</a></li>
+                </ul>
+              </div>          
+            </div>				
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-success" data-dismiss="modal">Aceptar</button>
+            <!--<input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">--> 
+         </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-
-<div id="deleteEmployeerModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form>
-        <div class="modal-header">						
-          <h4 class="modal-title text-center">Dar de Baja a Empleado</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">	
-          <h3 class="modal-title text-center">¿Esta seguro de dar de baja a este empleado?</h3>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button class="btn btn-danger" data-dismiss="modal">Aceptar</button>
-          <!--<input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">--> 
-       </div>
-      </form>
+  
+  <div id="deleteEmployeerModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form>
+          <div class="modal-header">						
+            <h4 class="modal-title text-center">Dar de Baja a Empleado</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">	
+            <h3 class="modal-title text-center">¿Esta seguro de dar de baja a este empleado?</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+            <!--<input type="submit" class="btn btn-success" data-bs-target="#modalInfoLaboral" data-bs-toggle="modal" value="Siguiente">--> 
+         </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+  </div>

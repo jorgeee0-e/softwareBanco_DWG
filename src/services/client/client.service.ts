@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Client } from 'src/app/Interfaces/Interfaces';
+import { constantes } from 'src/constantes/constantes';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,4 @@ export class ClientService {
   getClient(): Observable<Client|null>{
     return this.selectedClient.asObservable();
   }
-
-constructor() { }
-
 }

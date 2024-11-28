@@ -1,5 +1,6 @@
 export type UserRole = "Cliente"| "Dependiente" | "Cajero" | "Gerente_de_Sucursal" | "Gerente_General"; //Define los roles disponibles
 export type AccountType = "Chequera" | "Ahorro"; //Define los tipos de cuenta disponibles
+export type MovementType = "deposit" | "withdrawal" | "transfer_in" | "transfer_out"; //Define los tipos de cuenta disponibles
 
 export interface User {
 	id: string;
@@ -35,4 +36,16 @@ export interface Account {
 	balance: number;
 	currency: string;
 	client: Client|null;
+}
+
+
+
+export interface Transaction {
+	id: string;
+	description: string;
+	type: MovementType;
+	amount: number;
+	date: Date;
+	account_transmitter: Account;
+	account_receiver: Account;
 }

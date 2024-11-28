@@ -14,6 +14,13 @@ export const constantes = {
             CREATE: "/add",
             DELETE:"",
             UPDATE:"",
+        },
+        MOVEMENTS: {
+            API: "/movements",
+            GET: "/movements",
+            CREATE: "/add",
+            DELETE:"",
+            UPDATE:"",
         }
     }
 }

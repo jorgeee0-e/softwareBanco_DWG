@@ -1,23 +1,38 @@
 <div class="content-wrapper">
   <div class="view-customer-container">
     <div class="view-customer-card">
-      <h2>Mis Cuentas</h2>
+      <h2>{{client.name}} {{client.lastname}}</h2>
       
       <div class="accounts-container">
-<!--         <div class="account-card" *ngFor="let account of accounts" 
+        <div class="account-card" *ngFor="let account of cuentasDeCliente" 
              [class.selected]="account.id === selectedAccount.id"
-             (click)="onAccountSelect(account)">
-          <div class="account-type">{{ selectedAccount.type }}</div>
-          <div class="account-number">{{ account.number }}</div>
+             (click)="onAccountSelect(account); getAccountToReview(account.id); filterMovements()">
+          <div class="account-type">{{ account.id }}</div>
+          <div class="account-number">{{ account.type }}</div>
           <div class="account-balance">{{ account.balance | currency:'USD':'symbol':'1.2-2' }}</div>
-        </div> -->
+        </div>
+      </div>
+      <div class="container text-center mb-3">
+        <div class="row g-2">
+          <div class="col align-self-center">
+            <button class="btn btn-primary  btn-lg"><span routerLink="/deposit-money" routerLinkActive="active"><i class='bx bx-money-withdraw btn-lg'></i><a> Deposito</a> </span></button>
+          </div>
+          <div class="col align-self-center">        
+          <button class="btn btn-primary btn-lg"><span routerLink="/withdraw-money" routerLinkActive="active"><i class='bx bx-money btn-lg' ></i> Retiro</span></button>
+          </div>
+          <div class="col align-self-center">        
+            <button class="btn btn-primary btn-lg"><span [routerLink]="['/req-loan',client.id]" routerLinkActive="active"><i class='bx bxs-bank btn-lg' ></i> Préstamo</span></button>
+            </div>
+        </div>
+
       </div>
 
       <h3>Movimientos de la Cuenta</h3>
       <p class="selected-account">Cuenta seleccionada: {{ selectedAccount.id }}</p>
       
-<!--       <div class="transaction-list">
-        <div class="transaction-item" *ngFor="let transaction of transactions">
+      <div class="transaction-list">
+        <ng-container *ngIf="transaccionesDeCliente && transaccionesDeCliente.length>0; else noTransactions">
+        <div class="transaction-item" *ngFor="let transaction of transaccionesDeCliente">
           <div class="transaction-icon">
             <i [class]="getTransactionTypeIcon(transaction.type)"></i>
           </div>
@@ -25,11 +40,26 @@
             <div class="transaction-description">{{ transaction.description }}</div>
             <div class="transaction-date">{{ transaction.date | date:'dd/MM/yyyy' }}</div>
           </div>
-          <div class="transaction-amount" [ngClass]="{'positive': transaction.type === 'deposit', 'negative': transaction.type !== 'deposit'}">
-            {{ transaction.type === 'deposit' ? '+' : '-' }}{{ transaction.amount | currency:'USD':'symbol':'1.2-2' }}
+          <div class="transaction-amount" [ngClass]="{'positive': transaction.type === 'deposit' || transaction.type === 'transfer_in', 'negative': transaction.type !== 'deposit' && transaction.type !== 'transfer_in'}">
+            {{ transaction.type === 'deposit' || transaction.type === 'transfer_in' ? '+' : '-' }}{{ transaction.amount | currency:'USD':'symbol':'1.2-2' }}
           </div>
         </div>
-      </div> -->
+      </ng-container>
+        <ng-template #noTransactions>
+          <div class="transaction-list">
+            <div class="transaction-item">
+              <div class="transaction-icon">
+                <i [class]="getTransactionTypeIcon('vacio')"></i>
+              </div>
+              <div class="transaction-details">
+                <div class="transaction-description">No hay transacciones disponibles</div>
+                <div class="transaction-date">No date</div>
+              </div>
+            </div>
+            
+          </div>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>
