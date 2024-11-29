@@ -39,6 +39,7 @@ export class DepositMoneyComponent implements OnInit {
     salary: 0.00,
     credit_limit: 0 ,
     role: "Cliente",
+    user_id:null,
   }
   
 

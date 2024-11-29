@@ -32,6 +32,7 @@ export class WithdrawMoneyComponent implements OnInit {
     salary: 0.00,
     credit_limit: 0 ,
     role: "Cliente",
+    user_id:null,
   }
     //Cuenta donde se depositara el dinero. 
   cuentaADepositar: Account = {

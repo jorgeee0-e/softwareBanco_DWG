@@ -50,6 +50,7 @@ export class SearchComponent implements OnInit {
     salary: 0.00,
     credit_limit: 0 ,
     role: "Cliente",
+    user_id: null,
   };
   clienteRecibido$!: Observable<Client | null>;
   clienteEnviar: Client ={
@@ -69,6 +70,7 @@ export class SearchComponent implements OnInit {
     salary: 0.00,
     credit_limit: 0 ,
     role: "Cliente",
+    user_id: null,
   };
   clienteA: Client []=[];
   accountSend: Account = {

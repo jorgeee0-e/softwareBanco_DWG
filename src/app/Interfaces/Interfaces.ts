@@ -28,6 +28,7 @@ export interface Client {
 	salary: number;
 	credit_limit: number;
 	role: UserRole;
+	user_id: User | null;
 }
 
 export interface Account {
@@ -49,3 +50,12 @@ export interface Transaction {
 	account_transmitter: Account;
 	account_receiver: Account;
 }
+export interface Auth{
+	username: string;
+	password: string;
+}
+
+export interface LoginResponse {
+	token: string;
+	role: string;
+  }

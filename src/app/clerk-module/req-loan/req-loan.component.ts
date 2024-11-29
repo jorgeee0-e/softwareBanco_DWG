@@ -29,6 +29,7 @@ export class ReqLoanComponent implements OnInit {
     salary: 0.00,
     credit_limit: 0 ,
     role: "Cliente",
+    user_id: null,
   }
   clientId: string = '';
   loanTerm: string = '';

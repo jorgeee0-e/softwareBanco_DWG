@@ -42,6 +42,7 @@ export class AppComponent {
     salary: 0.00,
     credit_limit: 0 ,
     role: "Cliente",
+    user_id: null,
   }
   //Variable path para asignarle el path dependiendo de la peticion a hacer. 
   path :string = '';

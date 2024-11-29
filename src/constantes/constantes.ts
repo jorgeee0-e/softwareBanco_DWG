@@ -21,6 +21,11 @@ export const constantes = {
             CREATE: "/add",
             DELETE:"",
             UPDATE:"",
+        },
+        LOGIN:{
+            API:"/users",
+            GET: "/users",
+            LOGIN: "/login"
         }
     }
 }
