@@ -20,6 +20,7 @@ export class AppComponent {
   clerkView = true;
   bManager = true;
   gManager = true;
+  user: { username: string; role: string } | null = null;
 
   @ViewChild('btn') btn!: ElementRef;
   @ViewChild('bxSearch') bxSearch!: ElementRef;
@@ -67,6 +68,12 @@ export class AppComponent {
     this.bManagerOptions();
     this.gManagerOptions();
     this.getClients();
+
+    const userData = localStorage.getItem('user');
+
+    if (userData) {
+      this.user = JSON.parse(userData);
+    }
   }
 
   
@@ -183,5 +190,14 @@ export class AppComponent {
     }
     console.log("Filtrado: ", cliente);
     }
+  }
+
+  logout() {
+    // Eliminar los datos del usuario y el token del almacenamiento local
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+
+    // Redirigir al login
+    this.router.navigate(['/login']);
   }
 }

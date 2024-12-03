@@ -153,16 +153,17 @@
       <div class="profile_details">
         <img
           src="https://lh3.googleusercontent.com/a-/AOh14GjvKOdrR_Z-N4oaIqPg10NRav_6D9tiKWHNFXXftQ=s288-p-rw-no"
-          alt=""
+          alt="User Avatar"
         />
         <div class="name_job">
-          <div class="name">User Name</div>
-          <div class="job">Role</div>
+          <div class="name">{{ user?.username }}</div>
+          <div class="job">{{ user?.role }}</div>
         </div>
       </div>
-      <i class="bx bx-log-out" id="log_out"></i>
+      <i class="bx bx-log-out" id="log_out" (click)="logout()"></i>
     </div>
   </div>
+  
 </div>
 
 <!-- <div class="home_content">

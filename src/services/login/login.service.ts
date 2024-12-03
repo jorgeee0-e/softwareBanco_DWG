@@ -13,7 +13,7 @@ constructor( private httpClient: HttpClient) { }
 
 login(user: Auth): Observable<LoginResponse>{
   const header = new HttpHeaders({'Content-Type': 'application/json'})
-  return this.httpClient.post<LoginResponse>(constantes.API_ENDPOINT+constantes.METHODS.LOGIN.API+constantes.METHODS.LOGIN.LOGIN,user)
+  return this.httpClient.post<LoginResponse>(constantes.API_ENDPOINT+constantes.METHODS.LOGIN.API+constantes.METHODS.LOGIN.LOGIN, user, {headers: header})
 }
 
 getUsers(login: LoginResponse):Observable<User[]>{

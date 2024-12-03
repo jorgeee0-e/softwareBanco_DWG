@@ -52,37 +52,58 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: temporalmente solo validamos que el usuario y la contrasaña no vengan vacias, debemos agregar la logica para el login.
-    this.login((loginResponse)=>{
-      this.getUserInfo(loginResponse);
-    })
-  }
-
-  login(callback?: (login: LoginResponse)=> void){
-    console.log(this.credentials);
-    this.lgnSrv.login(this.credentials).subscribe({
-      next:(value)=> {
-          console.log(value);
-          if(callback){
-            callback(value);
-          }
-      },
-      error:(err)=> {
-          console.log(err);
-      },
+    // Validar que los campos no estén vacíos
+    if (!this.credentials.username || !this.credentials.password) {
+      this.errorMessage = 'Por favor, ingresa tu usuario y contraseña.';
+      return;
+    }
+  
+    // Lógica de login
+    this.login((loginResponse) => {
+      // Obtener información del usuario después del login exitoso
+      this.getUserInfo(loginResponse, () => {
+        // Redirigir a la página principal si todo es exitoso
+        this.router.navigate(['/view-customer']);
+      });
     });
   }
 
-  getUserInfo(login: LoginResponse){
-    this.lgnSrv.getUsers(login).subscribe({
-      next:(value)=> {
-          console.log(value);
+  login(callback?: (login: LoginResponse) => void) {
+    this.lgnSrv.login(this.credentials).subscribe({
+      next: (value) => {
+        console.log(value);
+        if (value.token) {
+          localStorage.setItem('authToken', value.token); // Guardar el token
+          callback?.(value);
+        } else {
+          this.errorMessage = 'Error al iniciar sesión: Token no recibido.';
+        }
       },
-      error:(err)=> {
-          console.log(err);
+      error: (err) => {
+        console.log(err);
+        this.errorMessage = 'Error al iniciar sesión: Verifica tus credenciales.';
       },
-    })
+    });
   }
+  
+
+  getUserInfo(login: LoginResponse, onSuccess: () => void) {
+    this.lgnSrv.getUsers(login).subscribe({
+      next: (value) => {
+        console.log('Información del usuario:', value);
+        const user = {
+          username: value[0].username, // Ajusta según la estructura de tu respuesta
+          role: login.role
+        };
+        localStorage.setItem('user', JSON.stringify(user)); // Guardar los datos del usuario
+        onSuccess();
+      },
+      error: (err) => {
+        console.log(err);
+        this.errorMessage = 'Error al obtener información del usuario.';
+      },
+    });
+  }  
 
   getClient(){
     this.clSrv.get('/').subscribe({

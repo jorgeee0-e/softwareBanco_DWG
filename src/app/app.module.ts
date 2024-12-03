@@ -23,9 +23,10 @@ import { EmployeerGeneralComponent } from './general-managment-module/employeer/
 import { LoanStatusBranchComponent } from './branch-managment-module/loan-status/loan-status.component';
 import { MoverDirectiva } from './directives/mover.directive';
 import { CommonModule } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ClientService } from 'src/services/client/client.service';
 import { ClientAccountsComponent } from './clerk-module/client-accounts/client-accounts.component';
+import { AuthInterceptor } from 'src/interceptors/auth.interceptor';
 
 const routes: Routes = [
   { path: 'clerk-summary', component: ClerkSummaryComponent },
@@ -69,6 +70,7 @@ const routes: Routes = [
   ],
   imports: [CommonModule,ReactiveFormsModule, BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideClientHydration(),
     provideHttpClient(withInterceptorsFromDi()),
     ClientService
