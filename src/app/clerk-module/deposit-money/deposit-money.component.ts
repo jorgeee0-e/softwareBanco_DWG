@@ -115,13 +115,22 @@ export class DepositMoneyComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.cuentaServicio.getCuenta().subscribe(estaCuenta =>{
-      if(estaCuenta){
+    // Obtener la cuenta seleccionada desde el servicio
+    this.cuentaServicio.getCuenta().subscribe((estaCuenta) => {
+      if (estaCuenta) {
         this.cuentaADepositar = estaCuenta as Account;
-        console.log(this.cuentaADepositar);
+        console.log('Cuenta a depositar cargada:', this.cuentaADepositar);
+  
+        // Actualizar valores en el formulario
+        this.depositForm.patchValue({
+          accountNumber: this.cuentaADepositar.id,
+          depositorName: `${this.cuentaADepositar.client?.name} ${this.cuentaADepositar.client?.lastname}`,
+          depositorId: this.cuentaADepositar.client?.id,
+        });
       }
     });
   }
+  
   getAccountById(){
     console.log(this.cuentaADepositar.id);
      this.accntSrv.get("/"+this.cuentaADepositar.id).subscribe({
@@ -157,31 +166,33 @@ export class DepositMoneyComponent implements OnInit {
     }
   }
 
-  mapFormValues(){
+  mapFormValues() {
     const formValues = this.depositForm.value;
-    if(this.selectedDepositType=='Transferencia'){
+  
+    if (this.selectedDepositType === 'Transferencia') {
       this.mainMovement = {
-        id:'',
-        description: formValues.notes || "Transacción realizada: "+ new Date(),
+        id: '',
+        description: formValues.notes || `Transferencia realizada: ${new Date()}`,
         type: 'transfer_out',
         amount: formValues.amount,
         date: new Date(),
         account_transmitter: this.cuentaADepositar,
         account_receiver: this.cuentaQueRecibe,
       };
+  
       this.secondaryMovement = {
-        id:'',
-        description: formValues.notes || "Transacción realizada: "+ new Date(),
+        id: '',
+        description: formValues.notes || `Transferencia recibida: ${new Date()}`,
         type: 'transfer_in',
         amount: formValues.amount,
         date: new Date(),
         account_transmitter: this.cuentaQueRecibe,
         account_receiver: this.cuentaADepositar,
-      }
-    } else{
+      };
+    } else {
       this.mainMovement = {
-        id:'',
-        description: formValues.notes || "Transacción realizada: "+ new Date(),
+        id: '',
+        description: formValues.notes || `Depósito realizado: ${new Date()}`,
         type: 'deposit',
         amount: formValues.amount,
         date: new Date(),
@@ -189,8 +200,10 @@ export class DepositMoneyComponent implements OnInit {
         account_receiver: this.cuentaADepositar,
       };
     }
-    
-  }
+  
+    console.log('Movimiento principal mapeado:', this.mainMovement);
+    console.log('Movimiento secundario mapeado:', this.secondaryMovement);
+  }  
 
   createTransactions(callback: () => void){
     let pending= this.transactionsToSend.length;
@@ -232,20 +245,18 @@ export class DepositMoneyComponent implements OnInit {
     
   }
 
-  getAccountsByDui(dui:string){
-    console.log(dui);
-    console.log(this.accounts);
-    this.accountsFiltradas= this.accounts.filter((cuenta: Account)=>{
-      const matches = cuenta.client!= null && cuenta.client.dui== dui;
-      return matches;
-    })
-    console.log(this.accountsFiltradas);
-/*     this.cdr.detectChanges();
- */  }
+  getAccountsByDui(dui: string) {
+    console.log('Filtrando cuentas por DUI:', dui);
+    this.accountsFiltradas = this.accounts.filter(
+      (cuenta: Account) => cuenta.client?.dui === dui
+    );
+    console.log('Cuentas filtradas:', this.accountsFiltradas);
+  }  
 
   createTransaction(){
 
   }
+  
   onAccountChange(accId: string){
     console.log(accId);
     if(accId){

@@ -7,14 +7,7 @@
         <form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="accountNumber">Número de cuenta</label>
-<!--             <input type="number" id="accountNumber" formControlName="accountNumber"  >
- -->            <div class="fomat">
-                  {{cuentaADepositar.id}}
-                </div>
-<!--             <select id="accountNumber" formControlName="accountNumber">
-              <option value="">Seleccione una cuenta</option>
-              <option *ngFor="let account of accounts" [value]="account">{{account}}</option>
-            </select> -->
+            <div class="fomat">{{ cuentaADepositar?.id }}</div>
           </div>
   
           <div class="form-group">
@@ -54,13 +47,18 @@
           <!-- Dropdown que muestra las cuentas del cliente buscado -->
           <div class="form-group" *ngIf="accountsFiltradas && accountsFiltradas.length > 0">
             <label for="cuentaQueRecibe">Seleccione Cuenta a transferir</label>
-            <select #cuentaIdEnviar id="cuentaQueRecibe" formControlName="cuentaQueRecibe"  
-                    
-                    (change)="onAccountChange(cuentaIdEnviar.value)">
+            <select
+              #cuentaIdEnviar
+              id="cuentaQueRecibe"
+              formControlName="cuentaQueRecibe"
+              (change)="onAccountChange(cuentaIdEnviar.value)"
+            >
               <option value="">Seleccione la cuenta</option>
-              <option *ngFor="let cuenta of accountsFiltradas" [value]="cuenta.id">{{cuenta.id}}</option>
+              <option *ngFor="let cuenta of accountsFiltradas" [value]="cuenta.id">
+                {{ cuenta.id }}
+              </option>
             </select>
-          </div>
+          </div>          
   
           <div class="form-group">
             <label for="notes">Notas (opcional)</label>

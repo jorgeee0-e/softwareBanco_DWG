@@ -7,11 +7,11 @@
         <div class="account-card" *ngFor="let account of cuentasDeCliente" 
              [class.selected]="account.id === selectedAccount.id"
              (click)="onAccountSelect(account); getAccountToReview(account.id); filterMovements()">
-          <div class="account-type">{{ account.id }}</div>
-          <div class="account-number">{{ account.type }}</div>
+          <div class="account-type">{{ account.type }}</div>
+          <div class="account-number">{{ account.id }}</div>
           <div class="account-balance">{{ account.balance | currency:'USD':'symbol':'1.2-2' }}</div>
         </div>
-      </div>
+      </div>      
       <div class="container text-center mb-3">
         <div class="row g-2">
           <div class="col align-self-center">

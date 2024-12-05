@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       next: (value) => {
         console.log(value);
         if (value.token) {
-          localStorage.setItem('authToken', value.token); // Guardar el token
+          localStorage.setItem('authToken', value.token);
           callback?.(value);
         } else {
           this.errorMessage = 'Error al iniciar sesión: Token no recibido.';
@@ -92,11 +92,22 @@ export class LoginComponent implements OnInit {
       next: (value) => {
         console.log('Información del usuario:', value);
         const user = {
-          username: value[0].username, // Ajusta según la estructura de tu respuesta
+          username: value[0].username,
           role: login.role
         };
-        localStorage.setItem('user', JSON.stringify(user)); // Guardar los datos del usuario
-        onSuccess();
+        localStorage.setItem('user', JSON.stringify(user));
+        const username = value[0]?.username;
+        if (username) {
+          this.clSrv.getClientByUsername(username).subscribe({
+            next: (clientData) => {
+              localStorage.setItem('clientId', clientData.clientId);
+              onSuccess();
+            },
+            error: (err) => {
+              console.log('Error obteniendo clientId:', err);
+            },
+          });
+        }
       },
       error: (err) => {
         console.log(err);

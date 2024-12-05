@@ -26,4 +26,8 @@ constructor(private httpClient: HttpClient) { }
   update(path: string, object: Client):Observable<any>{
     return this.httpClient.put(constantes.API_ENDPOINT+constantes.METHODS.CLIENTS.API+constantes.METHODS.CLIENTS.UPDATE+path, object).pipe(request=>request);
   }
+  getClientByUsername(username: string): Observable<any> {
+    const url = `${constantes.API_ENDPOINT}/clients/by-username?username=${username}`;
+    return this.httpClient.get<any>(url);
+  }  
 }

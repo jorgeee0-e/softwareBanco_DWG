@@ -71,20 +71,14 @@ export class ViewCustomerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params=>{
-      this.clientId="/"+params.get('id')|| '';
-      console.log("Id del cliente", this.clientId)
-      });
-      
+    const storedClientId = localStorage.getItem('clientId');
+    if (storedClientId) {
+      this.clientId = storedClientId;
       this.getAccounts();
       this.getMovements();
-
-      /* this.cuentaServicio.getCuenta().subscribe(estaCuenta =>{
-        if(estaCuenta){
-          this.selectedAccount = estaCuenta as Account;
-        }
-      }); */
-/*   console.log("cuenta seleccionada: ",this.selectedAccount); */
+    } else {
+      console.log('clientId no encontrado en localStorage.');
+    }
 }
 
   onAccountSelect(account: Account) {
@@ -102,20 +96,25 @@ export class ViewCustomerComponent implements OnInit {
     }
   }
 
-  getAccounts(){
+  getAccounts() {
     this.accntSrv.get(this.accPath).subscribe({
-      next: (result)=> {
-        this.accounts= result;
-        console.log(this.accounts);
-        this.getClientById();
+      next: (result) => {
+        console.log('Cuentas recibidas:', result);
+        this.cuentasDeCliente = result.map((account: Account) => ({
+          id: account.id,
+          type: account.type,
+          balance: account.balance,
+          currency: account.currency,
+          client: account.client
+        }));
+        console.log('Cuentas asignadas:', this.cuentasDeCliente);
       },
-      error:(err)=> {
-        console.log(err);
-      },
+      error: (err) => {
+        console.error('Error al obtener cuentas:', err);
+      }
     });
-    
-
   }
+  
 
   getMovements(){
     this.mvtSrv.get('').subscribe({
@@ -136,31 +135,31 @@ export class ViewCustomerComponent implements OnInit {
     })
   }
 
-  filterAccountsById(){
-    console.log("A filtrar: ",this.accounts)
-    
-    const sliced = this.clientId.startsWith('/') ? this.clientId.slice(1): this.clientId;
-    console.log("Criterio: ",sliced);
-    this.cuentasDeCliente= this.accounts.filter((cuenta: Account)=>{
-      const matches = cuenta.client!= null && cuenta.client.id== sliced;
-      return matches;
+  filterAccountsById() {
+    console.log('Cuentas antes de filtrar:', this.accounts);
+    const sliced = this.clientId.startsWith('/') ? this.clientId.slice(1) : this.clientId;
+    console.log('Criterio de filtrado:', sliced);
+    this.cuentasDeCliente = this.accounts.filter((cuenta: Account) => {
+      return cuenta.client && cuenta.client.id === sliced;
     });
-    console.log("Filtrado",this.cuentasDeCliente);
+    console.log('Cuentas después de filtrar:', this.cuentasDeCliente);
   }
+  
 
   //Peticion HTTP para cargar el cliente
-  getClientById(){
-    this.clSrv.get(this.clientId).subscribe({
-      next:(result)=> {
-        this.client= result;
+  getClientById() {
+    const path = this.clientId.startsWith('/') ? this.clientId : `/${this.clientId}`;
+    this.clSrv.get(path).subscribe({
+      next: (result) => {
+        this.client = result;
         console.log(this.client);
       },
-      error:(err)=> {
-        console.log(err);
+      error: (err) => {
+        console.error('Error obteniendo el cliente:', err);
       },
     });
-    this.filterAccountsById();
-  };
+  }
+  
   getCuentaById(idCuenta: string){
     this.accntSrv.get("/"+idCuenta).subscribe({
       next: (value)=> {
