@@ -200,4 +200,12 @@ export class AppComponent {
     // Redirigir al login
     this.router.navigate(['/login']);
   }
+
+  hasRole(role: string): boolean {
+    if (!this.user || !this.user.role) {
+      return false;
+    }
+    return this.user.role.includes(role);
+  }
+  
 }
